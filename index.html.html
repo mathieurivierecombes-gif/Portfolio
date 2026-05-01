@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathieu Riviere Combes</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f3ee;--surface:#fff;--black:#0f0f0e;--dark:#1c1c1a;--muted:#8a8784;--border:#e2dfd8;
+  --green:#2a6049;--gbg:#e6f2ec;--gmid:#3d9970;--orange:#c45c1a;--obg:#fdf0e8;
+  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--dark);font-family:var(--fb);overflow-x:hidden;font-size:15px}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fd);font-weight:800;font-size:0.95rem;letter-spacing:-0.03em;color:var(--black);text-decoration:none}
+.nav-logo em{font-style:normal;color:var(--green)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--black)}
+.nav-cta{background:var(--black)!important;color:var(--bg)!important;padding:0.38rem 0.95rem;border-radius:2rem}
+#hero{padding:2.5rem 2rem 0;position:relative;overflow:hidden}
+.hero-blob{position:absolute;top:-60px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--gbg);opacity:0.55;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:2.5rem;align-items:start;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.45rem;background:var(--gbg);border:1px solid #b2d8c4;border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--green);margin-bottom:1rem}
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gmid);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.02;letter-spacing:-0.04em;color:var(--black);margin-bottom:0.4rem}
+.h1-sub{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--green);margin-bottom:1rem;letter-spacing:-0.01em}
+.hero-body{font-size:0.87rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:1.5rem}
+.hero-actions{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.btn-dark{background:var(--black);color:var(--bg);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:transform 0.15s}
+.btn-dark:hover{transform:translateY(-1px)}
+.btn-out{border:1.5px solid var(--border);color:var(--dark);background:var(--surface);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:border-color 0.15s,transform 0.15s}
+.btn-out:hover{border-color:#aaa;transform:translateY(-1px)}
+.stats-row{display:flex;gap:0;border:1px solid var(--border);border-radius:0.85rem;background:var(--surface);overflow:hidden;margin-bottom:1.75rem}
+.st{flex:1;padding:0.85rem 1rem;text-align:center;border-right:1px solid var(--border)}
+.st:last-child{border-right:none}
+.st-num{font-family:var(--fd);font-weight:800;font-size:1.3rem;color:var(--black);letter-spacing:-0.03em;line-height:1}
+.st-num span{font-size:0.8rem;color:var(--green)}
+.st-lbl{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-top:0.15rem}
+.hero-right{display:flex;flex-direction:column;gap:0.85rem;padding-top:0.25rem}
+.photo-box{border-radius:1.25rem;background:var(--surface);border:1px solid var(--border);overflow:hidden;height:240px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:2rem;color:#ccc}
+.photo-box img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.chips{display:flex;gap:0.5rem;flex-wrap:wrap}
+.chip{background:var(--surface);border:1px solid var(--border);border-radius:2rem;padding:0.32rem 0.75rem;font-size:0.71rem;color:var(--dark)}
+.chip.g{background:var(--gbg);border-color:#b2d8c4;color:var(--green)}
+.chip.o{background:var(--obg);border-color:#f0c4a0;color:var(--orange)}
+.lang-row{display:flex;gap:0.5rem}
+.lang-item{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:0.75rem;padding:0.65rem 0.85rem;text-align:center}
+.lang-code{font-family:var(--fd);font-weight:700;font-size:0.9rem;color:var(--black)}
+.lang-lvl{font-size:0.65rem;color:var(--muted);margin-top:0.1rem}
+#value{background:var(--black);padding:1.5rem 2rem}
+.value-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.vc{background:#181816;border:1px solid #2a2a28;border-radius:1.25rem;padding:1.75rem;position:relative;overflow:hidden}
+.vc::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;opacity:0.08;pointer-events:none}
+.vc.tech::after{background:var(--gmid)}
+.vc.luxe::after{background:#d4a855}
+.vc-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:2rem;margin-bottom:1rem}
+.vc.tech .vc-tag{background:rgba(61,153,112,0.15);color:var(--gmid);border:1px solid rgba(61,153,112,0.25)}
+.vc.luxe .vc-tag{background:rgba(212,168,85,0.12);color:#d4a855;border:1px solid rgba(212,168,85,0.2)}
+.vc h3{font-family:var(--fd);font-weight:800;font-size:1.25rem;color:#f5f3ee;line-height:1.2;margin-bottom:0.65rem;letter-spacing:-0.02em}
+.vc p{font-size:0.82rem;color:#555;line-height:1.75}
+.vc-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.4rem}
+.vc-li{display:flex;align-items:start;gap:0.55rem;font-size:0.8rem;color:#666}
+.vc-li::before{content:'→';font-size:0.75rem;flex-shrink:0;margin-top:0.05rem}
+.vc.tech .vc-li::before{color:var(--gmid)}
+.vc.luxe .vc-li::before{color:#d4a855}
+#proof{padding:2rem;max-width:1100px;margin:0 auto}
+.sec-eye{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.4rem}
+h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem;line-height:1.1}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:1.1rem;padding:1.4rem;transition:box-shadow 0.2s,transform 0.2s}
+.pc:hover{box-shadow:0 6px 22px rgba(0,0,0,0.07);transform:translateY(-2px)}
+.pc-num{font-family:var(--fd);font-weight:800;font-size:2rem;letter-spacing:-0.04em;color:var(--black);line-height:1;margin-bottom:0.25rem}
+.pc-num span{font-size:1rem;color:var(--green)}
+.pc-title{font-size:0.78rem;font-weight:500;color:var(--dark);margin-bottom:0.3rem}
+.pc-sub{font-size:0.75rem;color:var(--muted);line-height:1.55}
+#exp{padding:2rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.exp-inner{max-width:1100px;margin:0 auto}
+.exp-list{display:flex;flex-direction:column;gap:0.85rem;margin-top:1.5rem}
+.ei{background:var(--bg);border:1px solid var(--border);border-radius:1.1rem;padding:1.25rem;display:grid;grid-template-columns:46px 1fr auto;gap:1rem;align-items:start;transition:box-shadow 0.2s,transform 0.2s}
+.ei:hover{box-shadow:0 5px 18px rgba(0,0,0,0.06);transform:translateY(-2px)}
+.ei-icon{width:46px;height:46px;border-radius:0.75rem;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ei-head{font-family:var(--fd);font-weight:700;font-size:0.87rem;color:var(--black);margin-bottom:0.12rem}
+.ei-co{font-size:0.74rem;color:var(--muted);margin-bottom:0.4rem}
+.ei-desc{font-size:0.79rem;color:#999;line-height:1.6}
+.ei-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
+.et{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:0.15rem 0.55rem;font-size:0.67rem;color:var(--muted)}
+.ei-date{font-size:0.69rem;color:var(--muted);white-space:nowrap}
+#skills-intl{padding:2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start}
+.skill-box{background:var(--surface);border:1px solid var(--border);border-radius:1.1rem;padding:1.5rem;margin-bottom:0.85rem}
+.skill-box:last-child{margin-bottom:0}
+.sg-lbl{font-size:0.67rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.sr{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem}
+.sr:last-child{margin-bottom:0}
+.sr-name{font-size:0.8rem;color:var(--dark);flex:1;margin-right:0.75rem}
+.sb-wrap{width:110px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
+.sb{height:100%;border-radius:2px;background:var(--black)}
+.sb.g{background:var(--gmid)}
+.intl-box{background:var(--black);border-radius:1.1rem;padding:1.5rem}
+.intl-box .sec-eye{color:var(--gmid)}
+.intl-box h2{color:#f5f3ee;font-size:1.3rem;margin-bottom:1.1rem}
+.intl-top{display:flex;align-items:start;gap:1rem;margin-bottom:1rem}
+.intl-flag-box{background:#1e1e1c;border:1px solid #2a2a28;border-radius:0.75rem;padding:0.6rem 0.75rem;font-size:1.5rem;flex-shrink:0}
+.intl-info h3{font-family:var(--fd);font-weight:700;font-size:0.92rem;color:#f5f3ee;margin-bottom:0.3rem}
+.intl-info p{font-size:0.78rem;color:#555;line-height:1.65}
+.mod-list{display:flex;flex-direction:column;gap:0.5rem}
+.mod{display:flex;align-items:center;gap:0.7rem;background:#1a1a18;border:1px solid #242422;border-radius:0.65rem;padding:0.6rem 0.85rem}
+.md{width:6px;height:6px;border-radius:50%;background:var(--gmid);flex-shrink:0}
+.mod span{font-size:0.78rem;color:#888}
+#vision{padding:2rem;background:var(--surface);border-top:1px solid var(--border)}
+.vision-inner{max-width:1100px;margin:0 auto}
+.vis-card{background:var(--black);border-radius:1.25rem;padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.vtag{display:inline-block;background:rgba(61,153,112,0.15);border:1px solid rgba(61,153,112,0.25);color:var(--gmid);font-size:0.67rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2rem;margin-bottom:0.9rem}
+.vis-card h3{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#f5f3ee;line-height:1.25;margin-bottom:0.7rem}
+.vis-card p{font-size:0.81rem;color:#555;line-height:1.75;margin-bottom:0.75rem}
+.vis-card p:last-child{margin-bottom:0}
+.vis-proof{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.25rem}
+.vp-item{display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid #242422;border-radius:0.65rem;padding:0.55rem 0.85rem}
+.vp-dot{width:6px;height:6px;border-radius:50%;background:var(--gmid);flex-shrink:0}
+.vp-item span{font-size:0.78rem;color:#888}
+.prog-item{margin-bottom:0.85rem}
+.prog-item:last-child{margin-bottom:0}
+.prog-top{display:flex;justify-content:space-between;font-size:0.73rem;color:#555;margin-bottom:0.35rem}
+.prog-bar{height:3px;background:#242422;border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--gmid);border-radius:2px}
+#contact{padding:2rem}
+.cc{max-width:1100px;margin:0 auto;background:var(--black);border-radius:1.5rem;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,153,112,0.1) 0%,transparent 70%);pointer-events:none}
+.cc .sec-eye{color:var(--gmid)}
+.cc h2{color:#f5f3ee;margin-bottom:0.75rem}
+.cc p{font-size:0.87rem;color:#555;max-width:420px;margin:0 auto 2rem;line-height:1.75}
+.clinks{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+.cl{display:flex;align-items:center;gap:0.45rem;background:#1a1a18;border:1px solid #2a2a28;border-radius:2rem;padding:0.6rem 1.15rem;font-size:0.8rem;color:#ccc;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
+.cl:hover{border-color:#444;transform:translateY(-2px)}
+footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:1px solid var(--border)}
+.fi{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fi.v{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">MRC<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="#value">Proposition</a></li>
+    <li><a href="#proof">Résultats</a></li>
+    <li><a href="#exp">Parcours</a></li>
+    <li><a href="#skills-intl">Compétences</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Alternance 1 an · Paris · Sept. 2026</div>
+      <h1>Mathieu<br>Riviere Combes</h1>
+      <p class="h1-sub">Le manager qui comprend la tech.</p>
+      <p class="hero-body">École de commerce, expérience internationale, curiosité active pour l'IA. Je ne code pas — je pilote, je structure, je décide. Et je comprends ce que la plupart des managers ne comprennent pas encore.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-dark">Me recruter →</a>
+        <a href="#proof" class="btn-out">Voir les résultats</a>
+      </div>
+      <div class="stats-row">
+        <div class="st"><div class="st-num">3<span>+</span></div><div class="st-lbl">Expériences</div></div>
+        <div class="st"><div class="st-num">2</div><div class="st-lbl">Pays</div></div>
+        <div class="st"><div class="st-num">50</div><div class="st-lbl">Nations</div></div>
+        <div class="st"><div class="st-num">C1</div><div class="st-lbl">Anglais</div></div>
+        <div class="st"><div class="st-num">6<span>p.</span></div><div class="st-lbl">Équipe gérée</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- REMPLACE LA LIGNE CI-DESSOUS PAR L'URL DE TA PHOTO -->
+      <div class="photo-box"><img src="https://i.ibb.co/LD8F347P/Photo-CV.jpg" alt="Mathieu Riviere Combes" onerror="this.parentNode.innerHTML='MRC'"/></div>
+      <div class="chips">
+        <span class="chip g">TBS Education · Toulouse</span>
+        <span class="chip">Bachelor Management</span>
+        <span class="chip o">Paris · Sept. 2026</span>
+        <span class="chip">Retail & Digital Mgmt</span>
+      </div>
+      <div class="lang-row">
+        <div class="lang-item"><div class="lang-code">FR</div><div class="lang-lvl">Natif</div></div>
+        <div class="lang-item"><div class="lang-code">EN</div><div class="lang-lvl">C1 Pro</div></div>
+        <div class="lang-item"><div class="lang-code">ES</div><div class="lang-lvl">A2</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="value" style="padding:1.5rem 2rem">
+  <div class="value-inner">
+    <div class="vc tech">
+      <div class="vc-tag">Tech & Digital</div>
+      <h3>Un manager qui<br>comprend la tech.</h3>
+      <p>Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, de comprendre leurs contraintes et de traduire les enjeux produit en décisions concrètes.</p>
+      <div class="vc-list">
+        <div class="vc-li">Lecture des enjeux produit et données</div>
+        <div class="vc-li">Coordination équipes tech / business</div>
+        <div class="vc-li">Vision IA appliquée au management</div>
+        <div class="vc-li">Curiosité systémique et culture digitale</div>
+      </div>
+    </div>
+    <div class="vc luxe">
+      <div class="vc-tag">Luxe & Image</div>
+      <h3>Des compétences<br>au service de l'image.</h3>
+      <p>Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.</p>
+      <div class="vc-list">
+        <div class="vc-li">Direction de projet de bout en bout</div>
+        <div class="vc-li">Relation client multilingue (FR / EN)</div>
+        <div class="vc-li">Sens du détail et culture visuelle</div>
+        <div class="vc-li">Profil international — Vancouver, 50 nations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" class="fi">
+  <p class="sec-eye">Ce que j'ai fait</p>
+  <h2>Résultats concrets</h2>
+  <div class="proof-grid">
+    <div class="pc">
+      <div class="pc-num">2 000<span>/j</span></div>
+      <div class="pc-title">Visiteurs gérés — EDF · Mondiaux Foix</div>
+      <div class="pc-sub">600 athlètes, 50 nations, parrainé par Tony Estanguet. Prévention des risques et relation public bilingue sur 5 jours de compétition.</div>
+    </div>
+    <div class="pc">
+      <div class="pc-num">6<span> pers.</span></div>
+      <div class="pc-title">Équipe pilotée — Chef de projet Ynov</div>
+      <div class="pc-sub">Recrutement stratégique par compétences, lancement complet d'une marque : 3 produits designés, buyer persona, étude de marché, jury de 5 experts.</div>
+    </div>
+    <div class="pc">
+      <div class="pc-num">100<span>%</span></div>
+      <div class="pc-title">Rayons textile gérés — Intersport</div>
+      <div class="pc-sub">Gestion autonome stocks, réassort, facing et flux clients sur l'ensemble du rayon textile d'un magasin à fort volume.</div>
+    </div>
+  </div>
+</section>
+
+<section id="exp" class="fi">
+  <div class="exp-inner">
+    <p class="sec-eye">Terrain</p>
+    <h2>Expériences professionnelles</h2>
+    <div class="exp-list">
+      <div class="ei">
+        <div class="ei-icon">⚡</div>
+        <div>
+          <div class="ei-head">Chef de projet — Lancement de marque</div>
+          <div class="ei-co">Ynov Campus · Toulouse</div>
+          <div class="ei-desc">Direction d'une équipe de 6 recrutée par compétences (design, marketing, animation 3D). Lancement complet d'une marque de vêtement : collection 3 produits, promotion, buyer persona, étude de marché et présentation à un jury de 5 experts.</div>
+          <div class="ei-tags"><span class="et">Management</span><span class="et">Design 2D/3D</span><span class="et">Maya / Blender</span><span class="et">Suite Adobe</span><span class="et">Marketing</span></div>
+        </div>
+        <div class="ei-date">2023–2024</div>
+      </div>
+      <div class="ei">
+        <div class="ei-icon">🛒</div>
+        <div>
+          <div class="ei-head">Conseiller de vente — Textile</div>
+          <div class="ei-co">Intersport · Pamiers</div>
+          <div class="ei-desc">Gestion autonome de l'ensemble des rayons textiles : réception des stocks, inventaire, réassort, facing et gestion des flux clients en continu.</div>
+          <div class="ei-tags"><span class="et">Retail ops</span><span class="et">Gestion stocks</span><span class="et">Relation client</span><span class="et">Autonomie</span></div>
+        </div>
+        <div class="ei-date">2025 · 3 mois</div>
+      </div>
+      <div class="ei">
+        <div class="ei-icon">🌊</div>
+        <div>
+          <div class="ei-head">Hydroguide — Événement international</div>
+          <div class="ei-co">EDF · Tarascon-sur-Ariège</div>
+          <div class="ei-desc">Prévention des risques rivière et barrages EDF. Stand aux Championnats du Monde Junior de Canoë-Kayak à Foix : 600 athlètes, 50 nations, 2 000 visiteurs/jour. Communication bilingue FR/EN avec Teams.</div>
+          <div class="ei-tags"><span class="et">Événementiel</span><span class="et">Bilingue FR/EN</span><span class="et">Prévention</span><span class="et">Teams</span></div>
+        </div>
+        <div class="ei-date">2025 · 3 mois</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="skills-intl" class="fi">
+  <div>
+    <p class="sec-eye">Boîte à outils</p>
+    <h2>Compétences</h2>
+    <div class="skill-box">
+      <div class="sg-lbl">Hard skills</div>
+      <div class="sr"><span class="sr-name">Organisation des flux</span><div class="sb-wrap"><div class="sb" style="width:65%"></div></div></div>
+      <div class="sr"><span class="sr-name">Miro / Trello / Outils collab</span><div class="sb-wrap"><div class="sb" style="width:70%"></div></div></div>
+      <div class="sr"><span class="sr-name">Design 2D/3D (Maya, Blender, Adobe)</span><div class="sb-wrap"><div class="sb" style="width:72%"></div></div></div>
+      <div class="sr"><span class="sr-name">Excel / Microsoft Office</span><div class="sb-wrap"><div class="sb" style="width:45%"></div></div></div>
+      <div class="sr"><span class="sr-name">Analyse de données</span><div class="sb-wrap"><div class="sb" style="width:35%"></div></div></div>
+    </div>
+    <div class="skill-box">
+      <div class="sg-lbl">Soft skills</div>
+      <div class="sr"><span class="sr-name">Management d'équipe</span><div class="sb-wrap"><div class="sb g" style="width:78%"></div></div></div>
+      <div class="sr"><span class="sr-name">Relation client (face-à-face)</span><div class="sb-wrap"><div class="sb g" style="width:72%"></div></div></div>
+      <div class="sr"><span class="sr-name">Planification stratégique</span><div class="sb-wrap"><div class="sb g" style="width:62%"></div></div></div>
+      <div class="sr"><span class="sr-name">Rigueur analytique</span><div class="sb-wrap"><div class="sb g" style="width:55%"></div></div></div>
+    </div>
+  </div>
+  <div>
+    <p class="sec-eye" style="opacity:0;pointer-events:none">—</p>
+    <h2 style="opacity:0;pointer-events:none">—</h2>
+    <div class="intl-box">
+      <p class="sec-eye">International</p>
+      <h2>Vancouver · 4 mois</h2>
+      <div class="intl-top">
+        <div class="intl-flag-box">🇨🇦</div>
+        <div class="intl-info">
+          <h3>BCIT — Business and Media</h3>
+          <p>Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.</p>
+        </div>
+      </div>
+      <div class="mod-list">
+        <div class="mod"><div class="md"></div><span>Operations Management</span></div>
+        <div class="mod"><div class="md"></div><span>Business Mathematics</span></div>
+        <div class="mod"><div class="md"></div><span>Business Communication</span></div>
+        <div class="mod"><div class="md"></div><span>Supply Chain — Miro / Trello</span></div>
+        <div class="mod"><div class="md"></div><span>Environnement 50+ nations</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="vision" class="fi">
+  <div class="vision-inner">
+    <p class="sec-eye">Vision & projet</p>
+    <h2>L'IA comme levier business</h2>
+    <div class="vis-card">
+      <div>
+        <div class="vtag">En cours</div>
+        <h3>Construction d'un réseau neuronal — exploration active</h3>
+        <p>Apprentissage du code et premier modèle d'IA. Pas pour devenir ingénieur — pour comprendre les mécanismes et identifier les applications concrètes dans les secteurs retail, luxe et finance.</p>
+        <p>Conviction : les métiers du management seront redéfinis par l'IA dans les 5 prochaines années. Je veux être du bon côté.</p>
+        <div class="vis-proof">
+          <div class="vp-item"><div class="vp-dot"></div><span>Ce site a été conçu et généré avec l'aide de l'IA</span></div>
+          <div class="vp-item"><div class="vp-dot"></div><span>Exploration active des LLMs et de leurs cas d'usage business</span></div>
+          <div class="vp-item"><div class="vp-dot"></div><span>Projet en cours : réseau neuronal from scratch</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="prog-item">
+          <div class="prog-top"><span>Fondamentaux IA / ML</span><span>60%</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-top"><span>Python / code</span><span>30%</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:30%"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-top"><span>Réseau neuronal (projet)</span><span>15%</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:15%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fi">
+  <div class="cc">
+    <p class="sec-eye">Recruteurs, c'est ici</p>
+    <h2>Alternance 1 an — Sept. 2026<br>Paris · Retail & Digital</h2>
+    <p>Je cherche une alternance d'un an en management dans la tech ou le luxe à Paris. Si mon profil vous parle, parlons-nous.</p>
+    <div class="clinks">
+      <a href="mailto:mathieu.riviere.combes@gmail.com" class="cl">✉ mathieu.riviere.combes@gmail.com</a>
+      <a href="tel:+33631529255" class="cl">📞 06 31 52 92 55</a>
+      <a href="https://www.linkedin.com/in/mathieurc" class="cl">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Mathieu Riviere Combes — TBS Education · Paris</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:0.06});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
