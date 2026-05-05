@@ -4,54 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mathieu Riviere Combes</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#f5f3ee;--surface:#fff;--black:#0f0f0e;--dark:#1c1c1a;--muted:#8a8784;--border:#e2dfd8;
   --green:#2a6049;--gbg:#e6f2ec;--gmid:#3d9970;--orange:#c45c1a;--obg:#fdf0e8;
+  --accent:#3d9970;--accent-bg:#e6f2ec;--accent-border:#b2d8c4;
   --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
 }
+
+/* TECH THEME */
+body.theme-tech{
+  --accent:#3d9970;--accent-bg:#e6f2ec;--accent-border:#b2d8c4;
+  --splash-bg:#0a0f0a;--splash-accent:#3d9970;
+  --topbar-bg:#1a2e1a;
+}
+/* LUXE THEME */
+body.theme-luxe{
+  --accent:#b8912a;--accent-bg:#fdf4e3;--accent-border:#e8d5a0;
+  --splash-bg:#0f0c07;--splash-accent:#d4a855;
+  --topbar-bg:#1a1508;
+  --bg:#f8f6f1;--border:#e8e4da;
+  --fd:'Playfair Display',serif;
+}
+body.theme-luxe h1,body.theme-luxe h2,body.theme-luxe .nav-logo,body.theme-luxe .focus-logo{font-family:'Playfair Display',serif;letter-spacing:0}
+body.theme-luxe .h1-sub{font-family:'DM Sans',sans-serif}
+body.theme-luxe .hero-eyebrow{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent)}
+body.theme-luxe .hero-eyebrow::before{background:var(--accent)}
+body.theme-luxe .sec-eye{color:var(--accent)}
+body.theme-luxe .topbar,.topbar-mobile{background:var(--topbar-bg,var(--green))}
+body.theme-luxe .nav-logo em{color:var(--accent)}
+
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--dark);font-family:var(--fb);overflow-x:hidden;font-size:15px}
+body{background:var(--bg);color:var(--dark);font-family:var(--fb);overflow-x:hidden;font-size:15px;transition:background 0.4s}
 
 /* ── SPLASH ── */
-.splash{
-  position:fixed;inset:0;z-index:500;
-  background:var(--black);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:2.5rem;padding:2rem;
-  transition:opacity 0.4s ease;
-}
+.splash{position:fixed;inset:0;z-index:500;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;transition:opacity 0.4s ease}
 .splash.hidden{opacity:0;pointer-events:none}
-.splash-logo{font-family:var(--fd);font-weight:800;font-size:1.1rem;color:#f5f3ee;letter-spacing:-0.03em}
-.splash-logo em{font-style:normal;color:var(--gmid)}
-.splash-title{font-family:var(--fd);font-weight:800;font-size:clamp(1.4rem,3vw,2rem);color:#f5f3ee;text-align:center;line-height:1.2;letter-spacing:-0.03em}
-.splash-sub{font-size:0.85rem;color:#666;text-align:center;max-width:360px;line-height:1.7}
-.splash-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.splash-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#f5f3ee;letter-spacing:-0.03em;margin-bottom:0.5rem}
+.splash-logo em{font-style:normal;color:#3d9970}
+.splash-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.3rem,3vw,1.9rem);color:#f5f3ee;text-align:center;line-height:1.25;letter-spacing:-0.02em}
+.splash-sub{font-size:0.83rem;color:#555;text-align:center;max-width:340px;line-height:1.7}
+.splash-btns{display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px}
 .splash-btn{
-  padding:1rem 2rem;border-radius:1rem;
-  font-family:var(--fd);font-weight:700;font-size:0.95rem;
-  cursor:pointer;border:none;transition:transform 0.15s,box-shadow 0.15s;
-  text-align:center;min-width:180px;
+  flex:1;min-width:200px;max-width:240px;
+  padding:1.5rem 1.25rem;border-radius:1.25rem;
+  font-weight:700;font-size:0.9rem;
+  cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;
+  text-align:left;position:relative;overflow:hidden;
 }
-.splash-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
-.splash-btn.tech{background:var(--gmid);color:#fff}
-.splash-btn.luxe{background:#d4a855;color:#fff}
-.splash-btn-sub{font-size:0.7rem;font-weight:400;opacity:0.8;display:block;margin-top:0.2rem}
-.splash-skip{font-size:0.72rem;color:#444;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.splash-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.4)}
+.splash-btn.tech{background:linear-gradient(135deg,#0d1f0d,#1a3a1a);border:1px solid #2a5a2a;color:#f5f3ee}
+.splash-btn.luxe{background:linear-gradient(135deg,#1a1408,#2e2410);border:1px solid #5a4a18;color:#f5f3ee}
+.splash-btn-icon{font-size:1.6rem;margin-bottom:0.75rem;display:block}
+.splash-btn-title{font-family:'Syne',sans-serif;font-size:1.05rem;display:block;margin-bottom:0.35rem}
+.splash-btn.tech .splash-btn-title{color:#3d9970}
+.splash-btn.luxe .splash-btn-title{color:#d4a855}
+.splash-btn-sub{font-size:0.72rem;font-weight:400;color:#888;display:block;line-height:1.5}
+.splash-skip{font-size:0.72rem;color:#333;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
 .splash-skip:hover{color:#888}
 
 /* ── TOPBAR ── */
-.topbar{background:var(--green);color:#fff;text-align:center;padding:0.55rem 1rem;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;position:sticky;top:0;z-index:101}
+.topbar{background:var(--topbar-bg,var(--green));color:#fff;text-align:center;padding:0.55rem 1rem;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;position:sticky;top:0;z-index:101;transition:background 0.4s}
 .topbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .topbar-mobile{display:none}
 
 /* ── NAV ── */
-nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:background 0.4s}
 .nav-logo{font-family:var(--fd);font-weight:800;font-size:0.95rem;letter-spacing:-0.03em;color:var(--black);text-decoration:none}
-.nav-logo em{font-style:normal;color:var(--green)}
+.nav-logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
 .nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer}
 .nav-links a:hover{color:var(--black)}
@@ -59,6 +81,12 @@ nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-betw
 .lang-toggle{display:flex;gap:0;border:1px solid var(--border);border-radius:2rem;overflow:hidden;background:var(--surface)}
 .lang-btn{padding:0.28rem 0.75rem;font-size:0.7rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s}
 .lang-btn.active{background:var(--black);color:var(--bg)}
+
+/* PROFILE SWITCHER in nav */
+.profile-switcher{display:none;align-items:center;gap:0.5rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.3rem 0.85rem;font-size:0.7rem;font-weight:500;color:var(--dark);cursor:pointer;transition:all 0.2s}
+.profile-switcher:hover{opacity:0.8}
+.profile-switcher.visible{display:flex}
+.profile-switcher .ps-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
 /* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
@@ -70,22 +98,24 @@ nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-betw
 /* ── MOBILE MENU ── */
 .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;background:var(--bg);z-index:99;border-bottom:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,0.1);padding:5rem 1.5rem 1.5rem;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1)}
 .mobile-menu.open{transform:translateY(0)}
-.mm-item{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none}
+.mm-item{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);cursor:pointer}
 .mm-item:last-of-type{border-bottom:none}
-.mm-label{font-family:var(--fd);font-weight:700;font-size:1.1rem;color:var(--black);letter-spacing:-0.02em}
+.mm-label{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:var(--black);letter-spacing:-0.02em}
 .mm-arrow{font-size:0.85rem;color:var(--muted)}
-.mm-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;margin-top:0.5rem}
+.mm-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;margin-top:0.5rem;gap:0.75rem;flex-wrap:wrap}
 .mm-lang{display:flex;gap:0;border:1px solid var(--border);border-radius:2rem;overflow:hidden}
 .mm-lang-btn{padding:0.3rem 0.85rem;font-size:0.7rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted)}
 .mm-lang-btn.active{background:var(--black);color:var(--bg)}
 .mm-cta{background:var(--black);color:var(--bg);padding:0.5rem 1.25rem;border-radius:2rem;font-size:0.8rem;font-weight:500;text-decoration:none}
+.mm-switch{background:var(--accent-bg);border:1px solid var(--accent-border);color:var(--dark);padding:0.45rem 1rem;border-radius:2rem;font-size:0.75rem;font-weight:500;cursor:pointer;display:none}
+.mm-switch.visible{display:block}
 
 /* ── FOCUS OVERLAY ── */
 .focus-overlay{position:fixed;inset:0;background:var(--bg);z-index:300;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
 .focus-overlay.active{opacity:1;pointer-events:all}
 .focus-bar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .focus-logo{font-family:var(--fd);font-weight:800;font-size:0.9rem;color:var(--black);text-decoration:none;letter-spacing:-0.03em}
-.focus-logo em{font-style:normal;color:var(--green)}
+.focus-logo em{font-style:normal;color:var(--accent)}
 .focus-right{display:flex;gap:0.5rem;align-items:center}
 .focus-nav-btn{background:none;border:1px solid var(--border);border-radius:2rem;padding:0.35rem 0.85rem;font-size:0.72rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.15s}
 .focus-nav-btn:hover{border-color:#aaa;color:var(--dark)}
@@ -95,73 +125,86 @@ nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-betw
 
 /* ── HERO ── */
 #hero{padding:2.5rem 2rem 0;position:relative;overflow:hidden}
-.hero-blob{position:absolute;top:-60px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--gbg);opacity:0.55;pointer-events:none}
+.hero-blob{position:absolute;top:-60px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--accent-bg);opacity:0.6;pointer-events:none;transition:background 0.4s}
 .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:2.5rem;align-items:start;position:relative}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:0.45rem;background:var(--gbg);border:1px solid #b2d8c4;border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--green);margin-bottom:1rem}
-.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gmid);animation:blink 2s infinite}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.45rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;transition:all 0.4s}
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;transition:background 0.4s}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.02;letter-spacing:-0.04em;color:var(--black);margin-bottom:0.4rem}
-.h1-sub{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--green);margin-bottom:1rem;letter-spacing:-0.01em}
+.h1-sub{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:1rem;letter-spacing:-0.01em;transition:color 0.4s}
 .hero-body{font-size:0.87rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:1.5rem}
 .hero-actions{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .btn-dark{background:var(--black);color:var(--bg);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:transform 0.15s}
 .btn-dark:hover{transform:translateY(-1px)}
-.btn-out{border:1.5px solid var(--border);color:var(--dark);background:var(--surface);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:border-color 0.15s,transform 0.15s}
+.btn-out{border:1.5px solid var(--border);color:var(--dark);background:var(--surface);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:border-color 0.15s,transform 0.15s;cursor:pointer}
 .btn-out:hover{border-color:#aaa;transform:translateY(-1px)}
 .stats-row{display:flex;gap:0;border:1px solid var(--border);border-radius:0.85rem;background:var(--surface);overflow:hidden;margin-bottom:1.75rem}
 .st{flex:1;padding:0.85rem 0.75rem;text-align:center;border-right:1px solid var(--border)}
 .st:last-child{border-right:none}
-.st-num{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--black);letter-spacing:-0.03em;line-height:1}
-.st-num span{font-size:0.75rem;color:var(--green)}
+.st-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--black);letter-spacing:-0.03em;line-height:1}
+.st-num span{font-size:0.75rem;color:var(--accent)}
 .st-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.15rem}
 .hero-right{display:flex;flex-direction:column;gap:0.85rem;padding-top:0}
-.photo-box{border-radius:1.25rem;background:var(--surface);border:1px solid var(--border);overflow:hidden;height:380px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:2rem;color:#ccc}
+.photo-box{border-radius:1.25rem;background:var(--surface);border:1px solid var(--border);overflow:hidden;height:380px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#ccc}
 .photo-box img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .chips{display:flex;gap:0.5rem;flex-wrap:wrap}
 .chip{background:var(--surface);border:1px solid var(--border);border-radius:2rem;padding:0.32rem 0.75rem;font-size:0.71rem;color:var(--dark)}
-.chip.g{background:var(--gbg);border-color:#b2d8c4;color:var(--green)}
+.chip.g{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent)}
 .chip.o{background:var(--obg);border-color:#f0c4a0;color:var(--orange)}
 .lang-row{display:flex;gap:0.5rem}
 .lang-item{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:0.75rem;padding:0.65rem 0.85rem;text-align:center}
-.lang-code{font-family:var(--fd);font-weight:700;font-size:0.9rem;color:var(--black)}
+.lang-code{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--black)}
 .lang-lvl{font-size:0.65rem;color:var(--muted);margin-top:0.1rem}
 
-/* ── PROFILE BADGE ── */
-.profile-badge{display:none;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border);border-radius:2rem;padding:0.4rem 1rem;font-size:0.75rem;font-weight:500;color:var(--dark);margin-bottom:1rem;width:fit-content}
-.profile-badge.visible{display:inline-flex}
-.profile-badge .badge-dot{width:7px;height:7px;border-radius:50%}
-.profile-badge.tech-mode .badge-dot{background:var(--gmid)}
-.profile-badge.luxe-mode .badge-dot{background:#d4a855}
-.profile-badge button{background:none;border:none;font-size:0.65rem;color:var(--muted);cursor:pointer;text-decoration:underline;margin-left:0.25rem}
+/* ── PROFIL CONTENT BLOCKS ── */
+.profil-section{display:none;padding:2rem;max-width:1100px;margin:0 auto}
+.profil-section.active{display:block}
+body.theme-tech .tech-content{display:block}
+body.theme-luxe .luxe-content{display:block}
+body:not(.theme-tech):not(.theme-luxe) .tech-content,
+body:not(.theme-tech):not(.theme-luxe) .luxe-content{display:block}
 
 /* ── VALUE ── */
-#value{background:var(--black);padding:1.5rem 2rem}
+#value{padding:1.5rem 2rem}
+body.theme-tech #value{background:var(--black)}
+body.theme-luxe #value{background:#0f0c07}
+body:not(.theme-tech):not(.theme-luxe) #value{background:var(--black)}
 .value-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.vc{background:#181816;border:1px solid #2a2a28;border-radius:1.25rem;padding:1.75rem;position:relative;overflow:hidden;transition:opacity 0.3s,transform 0.3s}
-.vc.dimmed{opacity:0.35;transform:scale(0.98)}
+.vc{background:#181816;border:1px solid #2a2a28;border-radius:1.25rem;padding:1.75rem;position:relative;overflow:hidden;transition:opacity 0.4s,transform 0.4s,border-color 0.4s}
+.vc.dimmed{opacity:0.3;transform:scale(0.97)}
+.vc.highlighted{border-color:#3a3a30}
 .vc::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;opacity:0.08;pointer-events:none}
-.vc.tech::after{background:var(--gmid)}
+.vc.tech::after{background:#3d9970}
 .vc.luxe::after{background:#d4a855}
 .vc-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:2rem;margin-bottom:1rem}
-.vc.tech .vc-tag{background:rgba(61,153,112,0.15);color:var(--gmid);border:1px solid rgba(61,153,112,0.25)}
+.vc.tech .vc-tag{background:rgba(61,153,112,0.15);color:#3d9970;border:1px solid rgba(61,153,112,0.25)}
 .vc.luxe .vc-tag{background:rgba(212,168,85,0.12);color:#d4a855;border:1px solid rgba(212,168,85,0.2)}
-.vc h3{font-family:var(--fd);font-weight:800;font-size:1.25rem;color:#f5f3ee;line-height:1.2;margin-bottom:0.65rem;letter-spacing:-0.02em}
-.vc p{font-size:0.82rem;color:#555;line-height:1.75}
-.vc-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.4rem}
-.vc-li{display:flex;align-items:start;gap:0.55rem;font-size:0.8rem;color:#666}
+.vc h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#f5f3ee;line-height:1.2;margin-bottom:0.65rem;letter-spacing:-0.02em}
+.vc p{font-size:0.85rem;color:#aaa;line-height:1.8}
+.vc-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.45rem}
+.vc-li{display:flex;align-items:start;gap:0.55rem;font-size:0.82rem;color:#888}
 .vc-li::before{content:'→';font-size:0.75rem;flex-shrink:0;margin-top:0.05rem}
-.vc.tech .vc-li::before{color:var(--gmid)}
+.vc.tech .vc-li::before{color:#3d9970}
 .vc.luxe .vc-li::before{color:#d4a855}
+
+/* ── PROFIL SPECIFIC SECTIONS ── */
+.profil-block{background:var(--surface);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem;margin-bottom:1rem}
+.profil-block h3{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--black);margin-bottom:0.75rem}
+.profil-block p{font-size:0.85rem;color:var(--muted);line-height:1.75}
+.profil-block ul{margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;list-style:none}
+.profil-block ul li{display:flex;align-items:start;gap:0.5rem;font-size:0.83rem;color:var(--dark)}
+.profil-block ul li::before{content:'→';color:var(--accent);font-size:0.75rem;flex-shrink:0;margin-top:0.1rem}
+.profil-tag{display:inline-flex;align-items:center;gap:0.35rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.25rem 0.75rem;font-size:0.72rem;font-weight:500;color:var(--accent);margin-bottom:1rem}
 
 /* ── PROOF ── */
 #proof{padding:2rem;max-width:1100px;margin:0 auto}
-.sec-eye{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.4rem}
-h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem;line-height:1.1}
+.sec-eye{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;transition:color 0.4s}
+h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.04em;color:var(--black);margin-bottom:1.5rem;line-height:1.1}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem}
 .pc{background:var(--surface);border:1px solid var(--border);border-radius:1.1rem;padding:1.4rem;transition:box-shadow 0.2s,transform 0.2s}
 .pc:hover{box-shadow:0 6px 22px rgba(0,0,0,0.07);transform:translateY(-2px)}
-.pc-num{font-family:var(--fd);font-weight:800;font-size:2rem;letter-spacing:-0.04em;color:var(--black);line-height:1;margin-bottom:0.25rem}
-.pc-num span{font-size:1rem;color:var(--green)}
+.pc-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-0.04em;color:var(--black);line-height:1;margin-bottom:0.25rem}
+.pc-num span{font-size:1rem;color:var(--accent)}
 .pc-title{font-size:0.78rem;font-weight:500;color:var(--dark);margin-bottom:0.3rem}
 .pc-sub{font-size:0.75rem;color:var(--muted);line-height:1.55}
 
@@ -172,9 +215,9 @@ h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);lett
 .ei{background:var(--bg);border:1px solid var(--border);border-radius:1.1rem;padding:1.25rem;display:grid;grid-template-columns:46px 1fr auto;gap:1rem;align-items:start;transition:box-shadow 0.2s,transform 0.2s}
 .ei:hover{box-shadow:0 5px 18px rgba(0,0,0,0.06);transform:translateY(-2px)}
 .ei-icon{width:46px;height:46px;border-radius:0.75rem;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.ei-head{font-family:var(--fd);font-weight:700;font-size:0.87rem;color:var(--black);margin-bottom:0.12rem}
+.ei-head{font-family:'Syne',sans-serif;font-weight:700;font-size:0.87rem;color:var(--black);margin-bottom:0.12rem}
 .ei-co{font-size:0.74rem;color:var(--muted);margin-bottom:0.4rem}
-.ei-desc{font-size:0.79rem;color:#999;line-height:1.6}
+.ei-desc{font-size:0.79rem;color:#888;line-height:1.65}
 .ei-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
 .et{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:0.15rem 0.55rem;font-size:0.67rem;color:var(--muted)}
 .ei-date{font-size:0.69rem;color:var(--muted);white-space:nowrap}
@@ -189,56 +232,59 @@ h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);lett
 .sr-name{font-size:0.8rem;color:var(--dark);flex:1;margin-right:0.75rem}
 .sb-wrap{width:110px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
 .sb{height:100%;border-radius:2px;background:var(--black)}
-.sb.g{background:var(--gmid)}
+.sb.g{background:var(--accent)}
 .intl-box{background:var(--black);border-radius:1.1rem;padding:1.5rem}
-.intl-box .sec-eye{color:var(--gmid)}
-.intl-box h2{color:#f5f3ee;font-size:1.3rem;margin-bottom:1.1rem}
+.intl-box .sec-eye{color:#3d9970}
+.intl-box h2{color:#f5f3ee;font-size:1.3rem;margin-bottom:1.1rem;font-family:'Syne',sans-serif;letter-spacing:-0.03em}
 .intl-top{display:flex;align-items:start;gap:1rem;margin-bottom:1rem}
 .intl-flag-box{background:#1e1e1c;border:1px solid #2a2a28;border-radius:0.75rem;padding:0.6rem 0.75rem;font-size:0.85rem;font-weight:800;letter-spacing:0.05em;color:#f5f3ee;font-family:'Syne',sans-serif;flex-shrink:0}
-.intl-info h3{font-family:var(--fd);font-weight:700;font-size:0.92rem;color:#f5f3ee;margin-bottom:0.3rem}
-.intl-info p{font-size:0.78rem;color:#555;line-height:1.65}
+.intl-info h3{font-family:'Syne',sans-serif;font-weight:700;font-size:0.92rem;color:#f5f3ee;margin-bottom:0.3rem}
+.intl-info p{font-size:0.8rem;color:#aaa;line-height:1.65}
 .mod-list{display:flex;flex-direction:column;gap:0.5rem}
-.mod{display:flex;align-items:center;gap:0.7rem;background:#1a1a18;border:1px solid #242422;border-radius:0.65rem;padding:0.6rem 0.85rem}
-.md{width:6px;height:6px;border-radius:50%;background:var(--gmid);flex-shrink:0}
-.mod span{font-size:0.78rem;color:#888}
+.mod{display:flex;align-items:center;gap:0.7rem;background:#1a1a18;border:1px solid #2a2a28;border-radius:0.65rem;padding:0.6rem 0.85rem}
+.md{width:6px;height:6px;border-radius:50%;background:#3d9970;flex-shrink:0}
+.mod span{font-size:0.8rem;color:#bbb}
 
 /* ── VISION ── */
 #vision{padding:2rem;background:var(--surface);border-top:1px solid var(--border)}
 .vision-inner{max-width:1100px;margin:0 auto}
 .vis-card{background:var(--black);border-radius:1.25rem;padding:2rem}
-.vtag{display:inline-block;background:rgba(61,153,112,0.15);border:1px solid rgba(61,153,112,0.25);color:var(--gmid);font-size:0.67rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2rem;margin-bottom:1rem}
-.vis-card h3{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#f5f3ee;line-height:1.25;margin-bottom:1rem}
+.vtag{display:inline-block;background:rgba(61,153,112,0.15);border:1px solid rgba(61,153,112,0.25);color:#3d9970;font-size:0.67rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2rem;margin-bottom:1rem}
+.vis-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:#f5f3ee;line-height:1.25;margin-bottom:1rem}
 .vis-projects{display:flex;flex-direction:column;gap:0.85rem}
-.vp-proj{background:#1a1a18;border:1px solid #242422;border-radius:0.85rem;padding:1rem 1.25rem}
-.vp-proj h4{font-family:var(--fd);font-weight:600;font-size:0.85rem;color:#f5f3ee;margin-bottom:0.4rem}
-.vp-proj p{font-size:0.8rem;color:#666;line-height:1.65}
+.vp-proj{background:#1e1e1c;border:1px solid #2a2a28;border-radius:0.85rem;padding:1.1rem 1.25rem}
+.vp-proj h4{font-family:'Syne',sans-serif;font-weight:600;font-size:0.88rem;color:#f0f0ee;margin-bottom:0.45rem}
+.vp-proj p{font-size:0.82rem;color:#aaa;line-height:1.7}
 
 /* ── CONTACT ── */
 #contact{padding:2rem}
 .cc{max-width:1100px;margin:0 auto;background:var(--black);border-radius:1.5rem;padding:3rem;text-align:center;position:relative;overflow:hidden}
-.cc::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,153,112,0.1) 0%,transparent 70%);pointer-events:none}
-.cc .sec-eye{color:var(--gmid)}
-.cc h2{color:#f5f3ee;margin-bottom:0.75rem}
-.cc p{font-size:0.87rem;color:#555;max-width:420px;margin:0 auto 2rem;line-height:1.75}
+.cc::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,153,112,0.08) 0%,transparent 70%);pointer-events:none}
+body.theme-luxe .cc::before{background:radial-gradient(circle,rgba(212,168,85,0.08) 0%,transparent 70%)}
+.cc .sec-eye{color:#3d9970}
+body.theme-luxe .cc .sec-eye{color:#d4a855}
+.cc h2{color:#f5f3ee;margin-bottom:0.75rem;font-family:'Syne',sans-serif}
+body.theme-luxe .cc h2{font-family:'Playfair Display',serif}
+.cc p{font-size:0.87rem;color:#aaa;max-width:420px;margin:0 auto 2rem;line-height:1.75}
 .clinks{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
-.cl{display:flex;align-items:center;gap:0.45rem;background:#1a1a18;border:1px solid #2a2a28;border-radius:2rem;padding:0.6rem 1.15rem;font-size:0.8rem;color:#ccc;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
-.cl:hover{border-color:#444;transform:translateY(-2px)}
+.cl{display:flex;align-items:center;gap:0.45rem;background:#1e1e1c;border:1px solid #2a2a28;border-radius:2rem;padding:0.6rem 1.15rem;font-size:0.8rem;color:#ccc;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
+.cl:hover{border-color:#555;transform:translateY(-2px)}
 
 /* ── FOOTER ── */
-footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border-top:1px solid var(--border)}
+footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted);border-top:1px solid var(--border)}
 .countdown{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
 .cd-item{display:flex;flex-direction:column;align-items:center;gap:0.2rem}
-.cd-num{font-family:var(--fd);font-weight:800;font-size:1.5rem;color:var(--dark);letter-spacing:-0.03em;line-height:1}
-.cd-lbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted)}
+.cd-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--dark);letter-spacing:-0.03em;line-height:1}
+.cd-lbl{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted)}
 .cd-label{font-size:0.78rem;color:var(--muted);margin-top:0.75rem}
 
 .fi{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
 .fi.v{opacity:1;transform:none}
 
 /* ── MOBILE ── */
-@media (max-width: 768px) {
+@media(max-width:768px){
   .topbar{display:none}
-  .topbar-mobile{display:block;background:var(--green);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.7rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;position:sticky;top:0;z-index:101}
+  .topbar-mobile{display:block;background:var(--topbar-bg,var(--green));color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.7rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;position:sticky;top:0;z-index:101;transition:background 0.4s}
   .topbar-mobile a{color:#fff;text-decoration:underline;text-underline-offset:2px}
   nav{top:32px;padding:0.85rem 1.25rem}
   .nav-links{display:none}
@@ -255,12 +301,12 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   .lang-item{padding:0.5rem}
   .lang-code{font-size:0.82rem}
   .lang-lvl{font-size:0.6rem}
-  h1{font-size:2.1rem}
+  h1{font-size:2rem}
   .h1-sub{font-size:0.95rem}
   .hero-body{font-size:0.85rem;max-width:100%}
   .hero-actions{flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
   .btn-dark,.btn-out{width:100%;text-align:center;padding:0.85rem 1.4rem;font-size:0.9rem}
-  .stats-row{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:0;flex-wrap:nowrap}
+  .stats-row{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap;margin-bottom:0}
   .stats-row::-webkit-scrollbar{display:none}
   .st{flex:0 0 auto;min-width:72px;padding:0.7rem 0.6rem}
   .st-num{font-size:1rem}
@@ -269,15 +315,15 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   .value-inner{grid-template-columns:1fr;gap:0.85rem}
   #proof{padding:1.5rem 1.25rem}
   .proof-grid{grid-template-columns:1fr;gap:0.75rem}
-  h2{font-size:1.5rem}
+  h2{font-size:1.4rem}
   #exp{padding:1.5rem 1.25rem}
   .ei{grid-template-columns:40px 1fr;gap:0.75rem}
   .ei-date{display:none}
   .ei-head::after{content:attr(data-date);display:block;font-size:0.68rem;color:var(--muted);font-weight:400;margin-top:0.1rem}
   .ei-desc{font-size:0.76rem}
   #skills-intl{grid-template-columns:1fr;padding:1.5rem 1.25rem;gap:0.85rem}
-  #skills-intl > div:nth-child(2) > p.sec-eye,
-  #skills-intl > div:nth-child(2) > h2{display:none}
+  #skills-intl>div:nth-child(2)>p.sec-eye,
+  #skills-intl>div:nth-child(2)>h2{display:none}
   .sb-wrap{width:80px}
   .sr-name{font-size:0.76rem}
   #vision{padding:1.5rem 1.25rem}
@@ -290,9 +336,10 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   .focus-content{padding:1.5rem 1.25rem 3rem}
   .focus-nav-btn{display:none}
   .splash-btns{flex-direction:column;align-items:center}
-  .splash-btn{width:100%;max-width:280px}
+  .splash-btn{width:100%;max-width:300px;min-width:unset}
   .countdown{gap:1rem}
   .cd-num{font-size:1.25rem}
+  .profil-section{padding:1.5rem 1.25rem}
 }
 </style>
 </head>
@@ -301,18 +348,20 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
 <!-- SPLASH -->
 <div class="splash" id="splash">
   <div class="splash-logo">MRC<em>.</em></div>
-  <div>
+  <div style="text-align:center">
     <div class="splash-title" id="splash-title">Bonjour, je suis Mathieu.<br>Quel est votre secteur ?</div>
-    <div class="splash-sub" id="splash-sub" style="margin-top:0.75rem">Choisissez votre profil pour voir les compétences les plus pertinentes pour vous.</div>
+    <div class="splash-sub" id="splash-sub" style="margin-top:0.75rem">Choisissez votre profil pour une expérience personnalisée.</div>
   </div>
   <div class="splash-btns">
     <button class="splash-btn tech" onclick="chooseProfil('tech')">
-      Tech & Digital
-      <span class="splash-btn-sub" id="splash-tech-sub">Management de projet · IA · Digital</span>
+      <span class="splash-btn-icon">⚡</span>
+      <span class="splash-btn-title" id="sb-tech-title">Tech & Digital</span>
+      <span class="splash-btn-sub" id="sb-tech-sub">Supply Chain · Ops · Gestion de projet digital</span>
     </button>
     <button class="splash-btn luxe" onclick="chooseProfil('luxe')">
-      Luxe & Image
-      <span class="splash-btn-sub" id="splash-luxe-sub">Excellence · International · Esthétique</span>
+      <span class="splash-btn-icon">✦</span>
+      <span class="splash-btn-title" id="sb-luxe-title">Luxe & Image</span>
+      <span class="splash-btn-sub" id="sb-luxe-sub">Retail management · Excellence · International</span>
     </button>
   </div>
   <span class="splash-skip" id="splash-skip" onclick="chooseProfil('all')">Voir le profil complet →</span>
@@ -337,16 +386,15 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-item" onclick="navTo('value')"><span class="mm-label" data-i18n="nav-proposition">Proposition</span><span class="mm-arrow">→</span></div>
+  <div class="mm-item" onclick="navTo('profil-section')"><span class="mm-label" id="mm-profil-label">Mon profil</span><span class="mm-arrow">→</span></div>
   <div class="mm-item" onclick="navTo('proof')"><span class="mm-label" data-i18n="nav-results">Résultats</span><span class="mm-arrow">→</span></div>
   <div class="mm-item" onclick="navTo('exp')"><span class="mm-label" data-i18n="nav-exp">Parcours</span><span class="mm-arrow">→</span></div>
   <div class="mm-item" onclick="navTo('skills-intl')"><span class="mm-label" data-i18n="nav-skills">Compétences</span><span class="mm-arrow">→</span></div>
   <div class="mm-item" onclick="navTo('vision')"><span class="mm-label" data-i18n="nav-vision">Projets IA</span><span class="mm-arrow">→</span></div>
   <div class="mm-item" onclick="navTo('contact')"><span class="mm-label" data-i18n="nav-contact">Contact</span><span class="mm-arrow">→</span></div>
   <div class="mm-bottom">
-    <div class="mm-lang">
-      <button class="mm-lang-btn active" id="mm-fr" onclick="setLang('fr')">FR</button>
-      <button class="mm-lang-btn" id="mm-en" onclick="setLang('en')">EN</button>
-    </div>
+    <div class="mm-lang"><button class="mm-lang-btn active" id="mm-fr" onclick="setLang('fr')">FR</button><button class="mm-lang-btn" id="mm-en" onclick="setLang('en')">EN</button></div>
+    <button class="mm-switch" id="mmSwitch" onclick="resetProfil();closeMobileMenu()">⇄ Changer de profil</button>
     <a href="#contact" class="mm-cta" onclick="closeMobileMenu()" data-i18n="hero-cta1">Me recruter →</a>
   </div>
 </div>
@@ -355,11 +403,13 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   <a href="#hero" class="nav-logo">MRC<em>.</em></a>
   <ul class="nav-links">
     <li><a onclick="navTo('value')" data-i18n="nav-proposition">Proposition</a></li>
+    <li><a onclick="navTo('profil-section')" id="nav-profil-link" data-i18n="nav-profil">Mon profil</a></li>
     <li><a onclick="navTo('proof')" data-i18n="nav-results">Résultats</a></li>
     <li><a onclick="navTo('exp')" data-i18n="nav-exp">Parcours</a></li>
     <li><a onclick="navTo('skills-intl')" data-i18n="nav-skills">Compétences</a></li>
     <li><a onclick="navTo('vision')" data-i18n="nav-vision">Projets IA</a></li>
     <li><a onclick="navTo('contact')" class="nav-cta" data-i18n="nav-contact">Contact</a></li>
+    <li><div class="profile-switcher" id="profileSwitcher" onclick="resetProfil()"><span class="ps-dot"></span><span id="switcherLabel">Changer</span></div></li>
     <li><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
@@ -369,18 +419,13 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   <div class="hero-blob"></div>
   <div class="hero-inner">
     <div>
-      <div class="profile-badge" id="profileBadge">
-        <span class="badge-dot"></span>
-        <span id="profileBadgeText"></span>
-        <button onclick="resetProfil()" id="profileBadgeReset">Changer</button>
-      </div>
       <div class="hero-eyebrow" data-i18n="hero-eyebrow">Alternance 1 an · Paris · Sept. 2026</div>
       <h1>Mathieu<br>Riviere Combes</h1>
-      <p class="h1-sub" data-i18n="hero-sub">Le manager qui comprend la tech.</p>
+      <p class="h1-sub" id="hero-sub-text" data-i18n="hero-sub">Le manager qui comprend la tech.</p>
       <p class="hero-body" data-i18n="hero-body">École de commerce, expérience internationale, curiosité active pour l'IA. Je ne code pas — je pilote, je structure, je décide. Je suis convaincu que les meilleurs managers de demain seront ceux qui parlent le langage du digital.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-dark" data-i18n="hero-cta1">Me recruter →</a>
-        <a onclick="navTo('proof')" class="btn-out" data-i18n="hero-cta2" style="cursor:pointer">Voir les résultats</a>
+        <a onclick="navTo('proof')" class="btn-out" data-i18n="hero-cta2">Voir les résultats</a>
       </div>
       <div class="stats-row">
         <div class="st"><div class="st-num">3<span>+</span></div><div class="st-lbl" data-i18n="stat1">Expériences</div></div>
@@ -407,33 +452,94 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   </div>
 </section>
 
+<!-- VALUE PROP -->
 <section id="value" style="padding:1.5rem 2rem">
   <div class="value-inner">
     <div class="vc tech" id="vc-tech">
       <div class="vc-tag">Tech & Digital</div>
       <h3 data-i18n="vc-tech-title">Un manager qui<br>comprend la tech.</h3>
-      <p data-i18n="vc-tech-body">Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, comprendre leurs contraintes et traduire les enjeux produit en décisions concrètes.</p>
+      <p data-i18n="vc-tech-body">Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, comprendre leurs contraintes et traduire les enjeux opérationnels en décisions concrètes.</p>
       <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-tech-li1">Lecture des enjeux produit et données</div>
-        <div class="vc-li" data-i18n="vc-tech-li2">Coordination équipes tech / business</div>
-        <div class="vc-li" data-i18n="vc-tech-li3">Vision IA appliquée au management</div>
-        <div class="vc-li" data-i18n="vc-tech-li4">Curiosité systémique et culture digitale</div>
+        <div class="vc-li" data-i18n="vc-tech-li1">Coordination Supply Chain & Ops digitales</div>
+        <div class="vc-li" data-i18n="vc-tech-li2">Gestion de projet dans des environnements tech</div>
+        <div class="vc-li" data-i18n="vc-tech-li3">Vision IA appliquée aux processus business</div>
+        <div class="vc-li" data-i18n="vc-tech-li4">Curiosité active pour les nouvelles technologies</div>
       </div>
     </div>
     <div class="vc luxe" id="vc-luxe">
-      <div class="vc-tag">Luxury & Image</div>
-      <h3 data-i18n="vc-luxe-title">Des compétences<br>au service de l'image.</h3>
-      <p data-i18n="vc-luxe-body">Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.</p>
+      <div class="vc-tag">Luxe & Image</div>
+      <h3 data-i18n="vc-luxe-title">L'excellence<br>comme standard.</h3>
+      <p data-i18n="vc-luxe-body">Un profil retail orienté excellence opérationnelle, sens du service et culture internationale. Formé à la gestion des flux et à la relation client haute exigence.</p>
       <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-luxe-li1">Direction de projet de bout en bout</div>
+        <div class="vc-li" data-i18n="vc-luxe-li1">Retail management & organisation des flux</div>
         <div class="vc-li" data-i18n="vc-luxe-li2">Relation client multilingue (FR / EN)</div>
-        <div class="vc-li" data-i18n="vc-luxe-li3">Sens du détail et culture visuelle</div>
+        <div class="vc-li" data-i18n="vc-luxe-li3">Sens du détail, de l'image et de l'esthétique</div>
         <div class="vc-li" data-i18n="vc-luxe-li4">Profil international — Vancouver, 50 nations</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROFIL SPECIFIC SECTION -->
+<div id="profil-section" class="fi">
+
+  <!-- TECH CONTENT -->
+  <div class="profil-section tech-content" id="tech-profil-block">
+    <p class="sec-eye">Pourquoi la tech</p>
+    <h2>Un profil business<br>au cœur de la tech</h2>
+    <div class="profil-block">
+      <div class="profil-tag">⚡ Conviction</div>
+      <h3>La technologie redéfinit tout — je veux être du bon côté</h3>
+      <p>Ma conviction est simple : la technologie n'est pas un secteur parmi d'autres, c'est le socle de l'avenir. Que ce soit l'IA, le hardware ou le e-commerce, chaque innovation redéfinit les façons de travailler, de consommer, d'organiser. Je veux être dans des équipes qui construisent cet avenir — pas en tant qu'ingénieur, mais comme le profil business qui comprend ce que les autres ne comprennent pas encore.</p>
+    </div>
+    <div class="profil-block">
+      <div class="profil-tag">🎯 Ce que je cherche</div>
+      <h3>Supply Chain · Operations · Gestion de projet digital</h3>
+      <p>Cohérent avec mon parcours TBS et mes expériences terrain, je cible des postes en operations ou supply chain dans des environnements tech — grands groupes (Google, Amazon, Microsoft, Salesforce…) comme startups ambitieuses ou agences digitales. La gestion de projet transversal m'intéresse également, notamment dans des structures à fort rythme d'innovation.</p>
+      <ul>
+        <li>Supply Chain analyst / coordinator junior</li>
+        <li>Operations manager en environnement tech</li>
+        <li>Chef de projet digital / product ops</li>
+        <li>Business analyst dans une scale-up ou grand groupe</li>
+      </ul>
+    </div>
+    <div class="profil-block">
+      <div class="profil-tag">🔍 Secteurs d'intérêt</div>
+      <h3>IA · Hardware · E-commerce</h3>
+      <p>Un attrait particulier pour les entreprises qui développent des technologies de rupture — IA générative, hardware innovant, nouveaux usages numériques. Le e-commerce m'intéresse également pour la richesse des problématiques supply chain et data qu'il génère.</p>
+    </div>
+  </div>
+
+  <!-- LUXE CONTENT -->
+  <div class="profil-section luxe-content" id="luxe-profil-block">
+    <p class="sec-eye">Pourquoi le luxe</p>
+    <h2>L'excellence<br>à chaque étape</h2>
+    <div class="profil-block">
+      <div class="profil-tag">✦ Conviction</div>
+      <h3>Ce qui me fascine : la matière qui devient désir</h3>
+      <p>Ce qui m'attire dans le luxe, c'est la chaîne de valeur dans sa forme la plus exigeante : comment une matière brute, façonnée avec une précision absolue et portée par une image soigneusement construite, devient un objet de désir universel. C'est l'excellence du service et la maîtrise de chaque détail opérationnel qui permettent à une maison de justifier son positionnement — et c'est là que je me vois contribuer.</p>
+    </div>
+    <div class="profil-block">
+      <div class="profil-tag">🎯 Ce que je cherche</div>
+      <h3>Retail Management · Supply Chain Luxe</h3>
+      <p>Mon profil Retail & Digital Management me positionne naturellement sur des postes retail en maison de luxe ou en multimarque haut de gamme à Paris. Je cherche un environnement où l'excellence opérationnelle n'est pas négociable — que ce soit dans une grande maison (LVMH, Kering, Richemont, Hermès) ou dans un retail multimarque premium.</p>
+      <ul>
+        <li>Assistant retail manager en maison de luxe</li>
+        <li>Coordinateur supply chain / logistique luxe</li>
+        <li>Assistant chef de rayon en multimarque haut de gamme</li>
+        <li>Operations coordinator dans une maison parisienne</li>
+      </ul>
+    </div>
+    <div class="profil-block">
+      <div class="profil-tag">🌍 Atout international</div>
+      <h3>Vancouver · Relation client multilingue</h3>
+      <p>Mon expérience EDF lors des Championnats du Monde Junior de Canoë-Kayak (600 athlètes, 50 nations) et mon séjour de 4 mois à Vancouver en immersion anglophone m'ont donné une aisance réelle en relation client internationale — un atout directement applicable dans l'univers du luxe parisien, où la clientèle est par nature multiculturelle.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROOF -->
 <section id="proof" class="fi">
   <p class="sec-eye" data-i18n="proof-eye">Ce que j'ai fait</p>
   <h2 data-i18n="proof-title">Résultats concrets</h2>
@@ -444,6 +550,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   </div>
 </section>
 
+<!-- EXP -->
 <section id="exp" class="fi">
   <div class="exp-inner">
     <p class="sec-eye" data-i18n="exp-eye">Terrain</p>
@@ -456,6 +563,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   </div>
 </section>
 
+<!-- SKILLS -->
 <div id="skills-intl" class="fi">
   <div>
     <p class="sec-eye" data-i18n="skills-eye">Boîte à outils</p>
@@ -467,7 +575,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
     <p class="sec-eye" style="opacity:0;pointer-events:none">—</p>
     <h2 style="opacity:0;pointer-events:none">—</h2>
     <div class="intl-box">
-      <p class="sec-eye" data-i18n="intl-eye">International</p>
+      <p class="sec-eye" style="color:#3d9970" data-i18n="intl-eye">International</p>
       <h2 data-i18n="intl-title">Vancouver · 4 mois</h2>
       <div class="intl-top"><div class="intl-flag-box">CA</div><div class="intl-info"><h3>BCIT — Business and Media</h3><p data-i18n="intl-body">Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.</p></div></div>
       <div class="mod-list"><div class="mod"><div class="md"></div><span>Operations Management</span></div><div class="mod"><div class="md"></div><span>Business Mathematics</span></div><div class="mod"><div class="md"></div><span>Business Communication</span></div><div class="mod"><div class="md"></div><span>Supply Chain — Miro / Trello</span></div><div class="mod"><div class="md"></div><span data-i18n="intl-mod">Environnement 50+ nations</span></div></div>
@@ -475,6 +583,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
   </div>
 </div>
 
+<!-- VISION -->
 <section id="vision" class="fi">
   <div class="vision-inner">
     <p class="sec-eye" data-i18n="vision-eye">Curiosité & projets</p>
@@ -483,23 +592,15 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
       <div class="vtag" data-i18n="vision-tag">En cours</div>
       <h3 data-i18n="vision-h3">Ce que j'explore concrètement</h3>
       <div class="vis-projects">
-        <div class="vp-proj">
-          <h4 data-i18n="vp1-title">Construction d'un réseau neuronal</h4>
-          <p data-i18n="vp1-desc">Apprentissage des fondamentaux du machine learning par la pratique : construction d'un premier modèle from scratch pour comprendre les mécanismes sous-jacents. Pas pour devenir ingénieur — pour ne pas être le manager qui ne comprend pas ce que son équipe construit.</p>
-        </div>
-        <div class="vp-proj">
-          <h4 data-i18n="vp2-title">Ce site, généré avec l'IA</h4>
-          <p data-i18n="vp2-desc">Ce portfolio a été entièrement conçu et généré avec l'aide d'un LLM (Claude, Anthropic). De la structure au code HTML/CSS, en passant par le contenu — une démonstration concrète de ma façon d'utiliser l'IA comme outil de productivité business.</p>
-        </div>
-        <div class="vp-proj">
-          <h4 data-i18n="vp3-title">Exploration des cas d'usage business</h4>
-          <p data-i18n="vp3-desc">Veille active sur les applications de l'IA dans le retail, le luxe et la finance. Conviction : les outils changent vite, mais comprendre comment les intégrer dans une stratégie business reste une compétence humaine.</p>
-        </div>
+        <div class="vp-proj"><h4 data-i18n="vp1-title">Construction d'un réseau neuronal</h4><p data-i18n="vp1-desc">Apprentissage des fondamentaux du machine learning par la pratique : construction d'un premier modèle from scratch pour comprendre les mécanismes sous-jacents. Pas pour devenir ingénieur — pour ne pas être le manager qui ne comprend pas ce que son équipe construit.</p></div>
+        <div class="vp-proj"><h4 data-i18n="vp2-title">Ce site, généré avec l'IA</h4><p data-i18n="vp2-desc">Ce portfolio a été entièrement conçu et généré avec l'aide d'un LLM (Claude, Anthropic). De la structure au code HTML/CSS — une démonstration concrète de ma façon d'utiliser l'IA comme outil de productivité business.</p></div>
+        <div class="vp-proj"><h4 data-i18n="vp3-title">Exploration des cas d'usage business</h4><p data-i18n="vp3-desc">Veille active sur les applications de l'IA dans le retail, le luxe et la finance. Conviction : les outils changent vite, mais comprendre comment les intégrer dans une stratégie business reste une compétence humaine.</p></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="fi">
   <div class="cc">
     <p class="sec-eye" data-i18n="contact-eye">Recruteurs, c'est ici</p>
@@ -516,7 +617,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
 <footer>
   <div>© 2026 Mathieu Riviere Combes — TBS Education · Paris</div>
   <div class="cd-label" id="cdLabel">Disponible en alternance dans</div>
-  <div class="countdown" id="countdown">
+  <div class="countdown">
     <div class="cd-item"><div class="cd-num" id="cd-j">--</div><div class="cd-lbl" data-i18n="cd-jours">Jours</div></div>
     <div class="cd-item"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl" data-i18n="cd-heures">Heures</div></div>
     <div class="cd-item"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl" data-i18n="cd-minutes">Minutes</div></div>
@@ -525,52 +626,68 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:#bbb;border
 </footer>
 
 <script>
-// ── SECTIONS ──
-const sections = ['value','proof','exp','skills-intl','vision','contact'];
+const sections = ['value','profil-section','proof','exp','skills-intl','vision','contact'];
 let currentFocusIndex = 0;
-
-// ── PROFIL ──
 let currentProfil = 'all';
 
+// ── PROFIL ──
 function chooseProfil(p) {
   currentProfil = p;
   const splash = document.getElementById('splash');
   splash.classList.add('hidden');
   setTimeout(() => splash.style.display = 'none', 400);
-  applyProfil(p);
+  applyTheme(p);
 }
 
-function applyProfil(p) {
+function applyTheme(p) {
+  const body = document.body;
+  body.classList.remove('theme-tech','theme-luxe');
+
+  const techBlock = document.getElementById('tech-profil-block');
+  const luxeBlock = document.getElementById('luxe-profil-block');
   const techCard = document.getElementById('vc-tech');
   const luxeCard = document.getElementById('vc-luxe');
-  const badge = document.getElementById('profileBadge');
-  const badgeText = document.getElementById('profileBadgeText');
+  const switcher = document.getElementById('profileSwitcher');
+  const switcherLabel = document.getElementById('switcherLabel');
+  const mmSwitch = document.getElementById('mmSwitch');
+  const heroSub = document.getElementById('hero-sub-text');
   const lang = document.documentElement.lang || 'fr';
 
   if (p === 'tech') {
+    body.classList.add('theme-tech');
+    techBlock.style.display = 'block';
+    luxeBlock.style.display = 'none';
     techCard.classList.remove('dimmed');
     luxeCard.classList.add('dimmed');
-    badge.classList.add('visible','tech-mode');
-    badge.classList.remove('luxe-mode');
-    badgeText.textContent = lang === 'en' ? 'Tech & Digital profile' : 'Profil Tech & Digital';
+    switcher.classList.add('visible');
+    mmSwitch.classList.add('visible');
+    switcherLabel.textContent = lang === 'en' ? '⇄ Switch: Luxury' : '⇄ Voir profil Luxe';
+    heroSub.textContent = lang === 'en' ? 'The manager who understands tech.' : 'Le manager qui comprend la tech.';
   } else if (p === 'luxe') {
+    body.classList.add('theme-luxe');
+    luxeBlock.style.display = 'block';
+    techBlock.style.display = 'none';
     luxeCard.classList.remove('dimmed');
     techCard.classList.add('dimmed');
-    badge.classList.add('visible','luxe-mode');
-    badge.classList.remove('tech-mode');
-    badgeText.textContent = lang === 'en' ? 'Luxury & Image profile' : 'Profil Luxe & Image';
+    switcher.classList.add('visible');
+    mmSwitch.classList.add('visible');
+    switcherLabel.textContent = lang === 'en' ? '⇄ Switch: Tech' : '⇄ Voir profil Tech';
+    heroSub.textContent = lang === 'en' ? 'Excellence as a standard.' : "L'excellence comme standard.";
   } else {
+    techBlock.style.display = 'block';
+    luxeBlock.style.display = 'block';
     techCard.classList.remove('dimmed');
     luxeCard.classList.remove('dimmed');
-    badge.classList.remove('visible');
+    switcher.classList.remove('visible');
+    mmSwitch.classList.remove('visible');
+    heroSub.textContent = lang === 'en' ? 'The manager who understands tech.' : 'Le manager qui comprend la tech.';
   }
 }
 
 function resetProfil() {
-  currentProfil = 'all';
-  applyProfil('all');
-  document.getElementById('splash').style.display = 'flex';
-  setTimeout(() => document.getElementById('splash').classList.remove('hidden'), 10);
+  const splash = document.getElementById('splash');
+  splash.style.display = 'flex';
+  setTimeout(() => splash.classList.remove('hidden'), 10);
 }
 
 // ── FOCUS ──
@@ -583,14 +700,48 @@ function openFocus(sectionId) {
   const el = document.getElementById(sectionId);
   if (!el) return;
   currentFocusIndex = sections.indexOf(sectionId);
-  const clone = el.cloneNode(true);
-  clone.removeAttribute('style');
-  clone.style.cssText = '';
+
+  const overlay = document.getElementById('focusOverlay');
   const fc = document.getElementById('focusContent');
+
+  // Deep clone with inline styles preserved
+  const clone = el.cloneNode(true);
+  // Remove id to avoid duplicate ids
+  clone.removeAttribute('id');
+  // Ensure visibility
+  clone.style.display = '';
+  clone.style.opacity = '1';
+  clone.style.transform = 'none';
+
+  // For profil-section: make sure both blocks show correctly based on profil
+  if (sectionId === 'profil-section') {
+    const tBlock = clone.querySelector('#tech-profil-block') || clone.querySelector('.tech-content');
+    const lBlock = clone.querySelector('#luxe-profil-block') || clone.querySelector('.luxe-content');
+    if (tBlock) tBlock.removeAttribute('id');
+    if (lBlock) lBlock.removeAttribute('id');
+    if (currentProfil === 'tech') {
+      if (tBlock) tBlock.style.display = 'block';
+      if (lBlock) lBlock.style.display = 'none';
+    } else if (currentProfil === 'luxe') {
+      if (lBlock) lBlock.style.display = 'block';
+      if (tBlock) tBlock.style.display = 'none';
+    } else {
+      if (tBlock) tBlock.style.display = 'block';
+      if (lBlock) lBlock.style.display = 'block';
+    }
+  }
+
+  // For skills-intl (it's a div, not section)
+  if (sectionId === 'skills-intl') {
+    clone.style.display = 'grid';
+  }
+
+  // Force all fi elements visible in focus
+  clone.querySelectorAll('.fi').forEach(el => el.classList.add('v'));
+
   fc.innerHTML = '';
   fc.appendChild(clone);
   updateFocusNav();
-  const overlay = document.getElementById('focusOverlay');
   overlay.classList.add('active');
   overlay.scrollTop = 0;
   document.body.style.overflow = 'hidden';
@@ -637,7 +788,7 @@ function updateCountdown() {
   const now = new Date();
   const diff = target - now;
   if (diff <= 0) {
-    document.getElementById('countdown').innerHTML = '<div style="color:var(--green);font-weight:600">Disponible maintenant ✓</div>';
+    document.getElementById('countdown').innerHTML = '<div style="color:var(--accent);font-weight:600;font-size:0.9rem">Disponible maintenant ✓</div>';
     return;
   }
   const j = Math.floor(diff / 86400000);
@@ -653,18 +804,18 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ── TRANSLATIONS ──
-const translations = {
-  fr: {
+const T = {
+  fr:{
     "topbar":"Recherche d'alternance · Paris · Septembre 2026 · 1 an","topbar-cta":"Me contacter →","topbar-short":"Alternance · Paris · Sept. 2026","topbar-cta-short":"Contact →",
-    "nav-proposition":"Proposition","nav-results":"Résultats","nav-exp":"Parcours","nav-skills":"Compétences","nav-vision":"Projets IA","nav-contact":"Contact",
-    "hero-eyebrow":"Alternance 1 an · Paris · Sept. 2026","hero-sub":"Le manager qui comprend la tech.",
+    "nav-proposition":"Proposition","nav-profil":"Mon profil","nav-results":"Résultats","nav-exp":"Parcours","nav-skills":"Compétences","nav-vision":"Projets IA","nav-contact":"Contact",
+    "hero-eyebrow":"Alternance 1 an · Paris · Sept. 2026",
     "hero-body":"École de commerce, expérience internationale, curiosité active pour l'IA. Je ne code pas — je pilote, je structure, je décide. Je suis convaincu que les meilleurs managers de demain seront ceux qui parlent le langage du digital.",
     "hero-cta1":"Me recruter →","hero-cta2":"Voir les résultats",
     "stat1":"Expériences","stat2":"Pays","stat3":"Nations","stat4":"Anglais","stat5":"Équipe gérée","chip-paris":"Paris · Sept. 2026","lang-fr":"Natif",
-    "vc-tech-title":"Un manager qui<br>comprend la tech.","vc-tech-body":"Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, comprendre leurs contraintes et traduire les enjeux produit en décisions concrètes.",
-    "vc-tech-li1":"Lecture des enjeux produit et données","vc-tech-li2":"Coordination équipes tech / business","vc-tech-li3":"Vision IA appliquée au management","vc-tech-li4":"Curiosité systémique et culture digitale",
-    "vc-luxe-title":"Des compétences<br>au service de l'image.","vc-luxe-body":"Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.",
-    "vc-luxe-li1":"Direction de projet de bout en bout","vc-luxe-li2":"Relation client multilingue (FR / EN)","vc-luxe-li3":"Sens du détail et culture visuelle","vc-luxe-li4":"Profil international — Vancouver, 50 nations",
+    "vc-tech-title":"Un manager qui<br>comprend la tech.","vc-tech-body":"Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, comprendre leurs contraintes et traduire les enjeux opérationnels en décisions concrètes.",
+    "vc-tech-li1":"Coordination Supply Chain & Ops digitales","vc-tech-li2":"Gestion de projet dans des environnements tech","vc-tech-li3":"Vision IA appliquée aux processus business","vc-tech-li4":"Curiosité active pour les nouvelles technologies",
+    "vc-luxe-title":"L'excellence<br>comme standard.","vc-luxe-body":"Un profil retail orienté excellence opérationnelle, sens du service et culture internationale. Formé à la gestion des flux et à la relation client haute exigence.",
+    "vc-luxe-li1":"Retail management & organisation des flux","vc-luxe-li2":"Relation client multilingue (FR / EN)","vc-luxe-li3":"Sens du détail, de l'image et de l'esthétique","vc-luxe-li4":"Profil international — Vancouver, 50 nations",
     "proof-eye":"Ce que j'ai fait","proof-title":"Résultats concrets",
     "proof1-title":"Visiteurs gérés — EDF · Mondiaux Foix","proof1-sub":"600 athlètes, 50 nations, parrainé par Tony Estanguet. Prévention des risques et relation public bilingue sur 5 jours de compétition.",
     "proof2-title":"Équipe pilotée — Chef de projet Ynov","proof2-sub":"Recrutement stratégique par compétences, lancement complet d'une marque : 3 produits designés, buyer persona, étude de marché, présentation devant un jury de professeurs et d'étudiants.",
@@ -679,24 +830,22 @@ const translations = {
     "intl-eye":"International","intl-title":"Vancouver · 4 mois","intl-body":"Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.","intl-mod":"Environnement 50+ nations",
     "vision-eye":"Curiosité & projets","vision-title":"L'IA comme terrain d'exploration","vision-tag":"En cours","vision-h3":"Ce que j'explore concrètement",
     "vp1-title":"Construction d'un réseau neuronal","vp1-desc":"Apprentissage des fondamentaux du machine learning par la pratique : construction d'un premier modèle from scratch pour comprendre les mécanismes sous-jacents. Pas pour devenir ingénieur — pour ne pas être le manager qui ne comprend pas ce que son équipe construit.",
-    "vp2-title":"Ce site, généré avec l'IA","vp2-desc":"Ce portfolio a été entièrement conçu et généré avec l'aide d'un LLM (Claude, Anthropic). De la structure au code HTML/CSS, en passant par le contenu — une démonstration concrète de ma façon d'utiliser l'IA comme outil de productivité business.",
+    "vp2-title":"Ce site, généré avec l'IA","vp2-desc":"Ce portfolio a été entièrement conçu et généré avec l'aide d'un LLM (Claude, Anthropic). De la structure au code HTML/CSS — une démonstration concrète de ma façon d'utiliser l'IA comme outil de productivité business.",
     "vp3-title":"Exploration des cas d'usage business","vp3-desc":"Veille active sur les applications de l'IA dans le retail, le luxe et la finance. Conviction : les outils changent vite, mais comprendre comment les intégrer dans une stratégie business reste une compétence humaine.",
     "contact-eye":"Recruteurs, c'est ici","contact-title":"Alternance 1 an — Sept. 2026<br>Paris · Retail & Digital","contact-body":"Je cherche une alternance d'un an en management dans la tech ou le luxe à Paris. Si mon profil vous parle, parlons-nous.",
-    "cd-jours":"Jours","cd-heures":"Heures","cd-minutes":"Minutes","cd-secondes":"Secondes",
-    "splash-title":"Bonjour, je suis Mathieu.<br>Quel est votre secteur ?","splash-sub":"Choisissez votre profil pour voir les compétences les plus pertinentes pour vous.",
-    "splash-tech-sub":"Management de projet · IA · Digital","splash-luxe-sub":"Excellence · International · Esthétique","splash-skip":"Voir le profil complet →"
+    "cd-jours":"Jours","cd-heures":"Heures","cd-minutes":"Minutes","cd-secondes":"Secondes"
   },
-  en: {
+  en:{
     "topbar":"Looking for a work-study · Paris · September 2026 · 1 year","topbar-cta":"Contact me →","topbar-short":"Work-study · Paris · Sept. 2026","topbar-cta-short":"Contact →",
-    "nav-proposition":"Value Prop","nav-results":"Results","nav-exp":"Experience","nav-skills":"Skills","nav-vision":"AI Projects","nav-contact":"Contact",
-    "hero-eyebrow":"Work-study · 1 year · Paris · Sept. 2026","hero-sub":"The manager who understands tech.",
+    "nav-proposition":"Value Prop","nav-profil":"My profile","nav-results":"Results","nav-exp":"Experience","nav-skills":"Skills","nav-vision":"AI Projects","nav-contact":"Contact",
+    "hero-eyebrow":"Work-study · 1 year · Paris · Sept. 2026",
     "hero-body":"Business school graduate, international experience, active curiosity for AI. I don't code — I lead, I structure, I decide. I believe the best managers of tomorrow will be those who speak the language of digital.",
     "hero-cta1":"Hire me →","hero-cta2":"See results",
     "stat1":"Experiences","stat2":"Countries","stat3":"Nations","stat4":"English","stat5":"Team led","chip-paris":"Paris · Sept. 2026","lang-fr":"Native",
-    "vc-tech-title":"A manager who<br>understands tech.","vc-tech-body":"Not an engineer. A business profile able to work with tech teams, understand their constraints and translate product challenges into concrete decisions.",
-    "vc-tech-li1":"Reading product & data challenges","vc-tech-li2":"Bridging tech and business teams","vc-tech-li3":"AI vision applied to management","vc-tech-li4":"Systemic curiosity and digital culture",
-    "vc-luxe-title":"Skills in service<br>of the brand.","vc-luxe-body":"Project management, high-standard client relations, aesthetic sense and international experience. A profile trained in operational excellence.",
-    "vc-luxe-li1":"End-to-end project leadership","vc-luxe-li2":"Multilingual client relations (FR / EN)","vc-luxe-li3":"Attention to detail and visual culture","vc-luxe-li4":"International profile — Vancouver, 50 nations",
+    "vc-tech-title":"A manager who<br>understands tech.","vc-tech-body":"Not an engineer. A business profile able to work with tech teams, understand their constraints and translate operational challenges into concrete decisions.",
+    "vc-tech-li1":"Supply Chain & digital ops coordination","vc-tech-li2":"Project management in tech environments","vc-tech-li3":"AI vision applied to business processes","vc-tech-li4":"Active curiosity for emerging technologies",
+    "vc-luxe-title":"Excellence<br>as a standard.","vc-luxe-body":"A retail profile focused on operational excellence, service quality and international culture. Trained in flow management and high-standard client relations.",
+    "vc-luxe-li1":"Retail management & flow organisation","vc-luxe-li2":"Multilingual client relations (FR / EN)","vc-luxe-li3":"Attention to detail, image and aesthetics","vc-luxe-li4":"International profile — Vancouver, 50 nations",
     "proof-eye":"What I've done","proof-title":"Concrete results",
     "proof1-title":"Visitors managed — EDF · World Champs","proof1-sub":"600 athletes, 50 nations, sponsored by Tony Estanguet. Risk prevention and bilingual public relations over 5 competition days.",
     "proof2-title":"Team led — Project Manager Ynov","proof2-sub":"Strategic recruitment by skill set, full brand launch: 3 products designed, buyer persona, market research, presentation to a jury of teachers and students.",
@@ -711,19 +860,17 @@ const translations = {
     "intl-eye":"International","intl-title":"Vancouver · 4 months","intl-body":"Full immersion in a North American English-speaking environment. Complete autonomy, international network, C1 English acquired in real professional conditions.","intl-mod":"50+ nations environment",
     "vision-eye":"Curiosity & projects","vision-title":"AI as a field of exploration","vision-tag":"In progress","vision-h3":"What I'm actively exploring",
     "vp1-title":"Building a neural network","vp1-desc":"Learning machine learning fundamentals through practice: building a first model from scratch to understand the underlying mechanics. Not to become an engineer — to avoid being the manager who doesn't understand what their team is building.",
-    "vp2-title":"This website, generated with AI","vp2-desc":"This portfolio was entirely designed and generated with the help of a LLM (Claude, Anthropic). From structure to HTML/CSS code and content — a concrete demonstration of how I use AI as a business productivity tool.",
+    "vp2-title":"This website, generated with AI","vp2-desc":"This portfolio was entirely designed and generated with the help of a LLM (Claude, Anthropic). From structure to HTML/CSS code — a concrete demonstration of how I use AI as a business productivity tool.",
     "vp3-title":"Exploring business use cases","vp3-desc":"Active monitoring of AI applications in retail, luxury and finance. Conviction: tools evolve fast, but understanding how to integrate them into a business strategy remains a human skill.",
     "contact-eye":"Recruiters, this way","contact-title":"Work-study · 1 year · Sept. 2026<br>Paris · Retail & Digital","contact-body":"Looking for a one-year work-study in tech or luxury management in Paris. If my profile speaks to you, let's talk.",
-    "cd-jours":"Days","cd-heures":"Hours","cd-minutes":"Minutes","cd-secondes":"Seconds",
-    "splash-title":"Hello, I'm Mathieu.<br>What's your sector?","splash-sub":"Choose your profile to see the most relevant skills for you.",
-    "splash-tech-sub":"Project management · AI · Digital","splash-luxe-sub":"Excellence · International · Aesthetics","splash-skip":"See full profile →"
+    "cd-jours":"Days","cd-heures":"Hours","cd-minutes":"Minutes","cd-secondes":"Seconds"
   }
 };
 
 function setLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+    if (T[lang] && T[lang][key] !== undefined) el.innerHTML = T[lang][key];
   });
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
   const mmFr = document.getElementById('mm-fr');
@@ -731,13 +878,17 @@ function setLang(lang) {
   if (mmFr) mmFr.classList.toggle('active', lang === 'fr');
   if (mmEn) mmEn.classList.toggle('active', lang === 'en');
   document.documentElement.lang = lang;
-  if (currentProfil !== 'all') applyProfil(currentProfil);
   const cdLabel = document.getElementById('cdLabel');
   if (cdLabel) cdLabel.textContent = lang === 'en' ? 'Available for work-study in' : 'Disponible en alternance dans';
+  if (currentProfil !== 'all') applyTheme(currentProfil);
 }
 
 const userLang = navigator.language || navigator.userLanguage;
 setLang(userLang.startsWith('fr') ? 'fr' : 'en');
+
+// Init profil blocks visibility
+document.getElementById('tech-profil-block').style.display = 'block';
+document.getElementById('luxe-profil-block').style.display = 'block';
 
 const obs = new IntersectionObserver(e => {
   e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
