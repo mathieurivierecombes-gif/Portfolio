@@ -25,7 +25,7 @@ nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-betw
 .nav-logo{font-family:var(--fd);font-weight:800;font-size:0.95rem;letter-spacing:-0.03em;color:var(--black);text-decoration:none}
 .nav-logo em{font-style:normal;color:var(--green)}
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
-.nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer}
 .nav-links a:hover{color:var(--black)}
 .nav-cta{background:var(--black)!important;color:var(--bg)!important;padding:0.38rem 0.95rem;border-radius:2rem}
 .lang-toggle{display:flex;gap:0;border:1px solid var(--border);border-radius:2rem;overflow:hidden;background:var(--surface)}
@@ -33,69 +33,62 @@ nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-betw
 .lang-btn.active{background:var(--black);color:var(--bg)}
 
 /* HAMBURGER */
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .hamburger span{width:22px;height:2px;background:var(--black);border-radius:2px;transition:all 0.3s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* FULLSCREEN MENU OVERLAY */
-.menu-overlay{
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;
+  background:var(--bg);z-index:99;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 8px 32px rgba(0,0,0,0.1);
+  padding:5rem 1.5rem 1.5rem;
+  transform:translateY(-100%);
+  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-menu.open{transform:translateY(0)}
+.mm-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 0;border-bottom:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+}
+.mm-item:last-of-type{border-bottom:none}
+.mm-label{font-family:var(--fd);font-weight:700;font-size:1.1rem;color:var(--black);letter-spacing:-0.02em}
+.mm-arrow{font-size:0.85rem;color:var(--muted)}
+.mm-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;margin-top:0.5rem}
+.mm-lang{display:flex;gap:0;border:1px solid var(--border);border-radius:2rem;overflow:hidden}
+.mm-lang-btn{padding:0.3rem 0.85rem;font-size:0.7rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted)}
+.mm-lang-btn.active{background:var(--black);color:var(--bg)}
+.mm-cta{background:var(--black);color:var(--bg);padding:0.5rem 1.25rem;border-radius:2rem;font-size:0.8rem;font-weight:500;text-decoration:none}
+
+/* FOCUS OVERLAY */
+.focus-overlay{
   position:fixed;top:0;left:0;right:0;bottom:0;
-  background:var(--black);
-  z-index:200;
-  display:flex;flex-direction:column;
+  background:var(--bg);z-index:300;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
   opacity:0;pointer-events:none;
-  transition:opacity 0.35s ease;
+  transition:opacity 0.3s ease;
 }
-.menu-overlay.open{opacity:1;pointer-events:all}
-.menu-overlay-inner{
-  display:flex;flex-direction:column;
-  justify-content:center;
-  padding:3rem;
-  flex:1;
-  gap:0;
+.focus-overlay.active{opacity:1;pointer-events:all}
+.focus-bar{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.85rem 2rem;
+  background:rgba(245,243,238,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
 }
-.menu-close{
-  position:absolute;top:1.25rem;right:1.5rem;
-  background:none;border:none;cursor:pointer;
-  color:#f5f3ee;font-size:1.5rem;line-height:1;
-  font-family:var(--fd);font-weight:300;
-  padding:0.5rem;
-}
-.menu-logo{
-  position:absolute;top:1.35rem;left:1.75rem;
-  font-family:var(--fd);font-weight:800;font-size:1rem;
-  color:#f5f3ee;text-decoration:none;letter-spacing:-0.03em;
-}
-.menu-logo em{font-style:normal;color:var(--gmid)}
-.menu-nav-item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.1rem 0;
-  border-bottom:1px solid #1f1f1d;
-  cursor:pointer;
-  text-decoration:none;
-  transition:padding-left 0.2s;
-}
-.menu-nav-item:last-of-type{border-bottom:none}
-.menu-nav-item:hover{padding-left:0.5rem}
-.menu-nav-label{font-family:var(--fd);font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);color:#f5f3ee;letter-spacing:-0.03em;line-height:1}
-.menu-nav-num{font-size:0.72rem;color:#444;font-weight:500;letter-spacing:0.05em}
-.menu-nav-item:hover .menu-nav-label{color:var(--gmid)}
-.menu-footer{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:1.5rem;
-  margin-top:auto;
-}
-.menu-footer-cta{
-  background:var(--gmid);color:#fff;
-  padding:0.75rem 1.75rem;border-radius:2rem;
-  font-weight:500;font-size:0.88rem;
-  text-decoration:none;display:inline-block;
-}
-.menu-lang{display:flex;gap:0;border:1px solid #2a2a28;border-radius:2rem;overflow:hidden}
-.menu-lang-btn{padding:0.45rem 1rem;font-size:0.75rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:#666;transition:all 0.15s}
-.menu-lang-btn.active{background:#f5f3ee;color:var(--black)}
+.focus-logo{font-family:var(--fd);font-weight:800;font-size:0.9rem;color:var(--black);text-decoration:none;letter-spacing:-0.03em}
+.focus-logo em{font-style:normal;color:var(--green)}
+.focus-right{display:flex;gap:0.5rem;align-items:center}
+.focus-nav-btn{background:none;border:1px solid var(--border);border-radius:2rem;padding:0.35rem 0.85rem;font-size:0.72rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.15s}
+.focus-nav-btn:hover{border-color:#aaa;color:var(--dark)}
+.focus-nav-btn:disabled{opacity:0.3;cursor:default}
+.focus-close{background:var(--black);color:var(--bg);border:none;border-radius:2rem;padding:0.35rem 0.9rem;font-size:0.72rem;font-weight:500;cursor:pointer}
+.focus-content{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 
 /* HERO */
 #hero{padding:2.5rem 2rem 0;position:relative;overflow:hidden}
@@ -217,15 +210,16 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
 .fi{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
 .fi.v{opacity:1;transform:none}
 
-/* ===================== MOBILE ===================== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .topbar{display:none}
   .topbar-mobile{display:block;background:var(--green);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.7rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;position:sticky;top:0;z-index:101}
   .topbar-mobile a{color:#fff;text-decoration:underline;text-underline-offset:2px}
   nav{top:32px;padding:0.85rem 1.25rem}
   .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:block}
   #hero{padding:1.5rem 1.25rem 1.5rem}
-  .hero-blob{width:250px;height:250px;top:-40px;right:-40px}
   .hero-inner{grid-template-columns:1fr;gap:0}
   .hero-right{order:-1;gap:0.75rem;margin-bottom:1.25rem}
   .photo-box{height:0;padding-bottom:75%;position:relative;border-radius:1.25rem}
@@ -241,23 +235,11 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
   .hero-body{font-size:0.85rem;max-width:100%}
   .hero-actions{flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
   .btn-dark,.btn-out{width:100%;text-align:center;padding:0.85rem 1.4rem;font-size:0.9rem}
-
-  /* Stats — scroll horizontal sur mobile */
-  .stats-row{
-    display:flex;flex-wrap:nowrap;
-    overflow-x:auto;-webkit-overflow-scrolling:touch;
-    scrollbar-width:none;border-radius:0.85rem;margin-bottom:0;
-  }
+  .stats-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:0}
   .stats-row::-webkit-scrollbar{display:none}
-  .st{
-    flex:0 0 auto;min-width:80px;
-    padding:0.75rem 0.85rem;
-    border-right:1px solid var(--border);border-bottom:none;
-  }
-  .st:last-child{border-right:none}
+  .st{flex:0 0 auto;min-width:80px;padding:0.75rem 0.85rem}
   .st-num{font-size:1.1rem}
   .st-lbl{font-size:0.55rem}
-
   #value{padding:1.25rem}
   .value-inner{grid-template-columns:1fr;gap:0.85rem}
   #proof{padding:1.5rem 1.25rem}
@@ -280,65 +262,54 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
   .clinks{flex-direction:column;align-items:stretch}
   .cl{justify-content:center;padding:0.85rem 1.25rem;font-size:0.85rem}
   footer{font-size:0.7rem;padding:1.25rem}
-
-  /* Menu overlay mobile — ajustements */
-  .menu-overlay-inner{padding:2rem 1.5rem}
-  .menu-nav-label{font-size:1.8rem}
+  .focus-bar{padding:0.85rem 1.25rem}
+  .focus-content{padding:1.5rem 1.25rem 3rem}
+  .focus-nav-btn{display:none}
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  🎯 <span data-i18n="topbar">Recherche d'alternance · Paris · Septembre 2026 · 1 an</span> — <a href="#contact" data-i18n="topbar-cta">Me contacter →</a>
-</div>
-<div class="topbar-mobile">
-  🎯 <span data-i18n="topbar-short">Alternance · Paris · Sept. 2026</span> — <a href="#contact" data-i18n="topbar-cta-short">Contact →</a>
+<div class="topbar">🎯 <span data-i18n="topbar">Recherche d'alternance · Paris · Septembre 2026 · 1 an</span> — <a href="#contact" data-i18n="topbar-cta">Me contacter →</a></div>
+<div class="topbar-mobile">🎯 <span data-i18n="topbar-short">Alternance · Paris · Sept. 2026</span> — <a href="#contact" data-i18n="topbar-cta-short">Contact →</a></div>
+
+<!-- FOCUS OVERLAY -->
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-bar">
+    <a href="#" class="focus-logo" onclick="closeFocus();return false;">MRC<em>.</em></a>
+    <div class="focus-right">
+      <button class="focus-nav-btn" id="focusPrevBtn" onclick="focusPrev()">← Préc.</button>
+      <button class="focus-nav-btn" id="focusNextBtn" onclick="focusNext()">Suiv. →</button>
+      <button class="focus-close" onclick="closeFocus()">✕ Retour</button>
+    </div>
+  </div>
+  <div class="focus-content" id="focusContent"></div>
 </div>
 
-<!-- FULLSCREEN MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay">
-  <a href="#hero" class="menu-logo" onclick="closeMenu()">MRC<em>.</em></a>
-  <button class="menu-close" onclick="closeMenu()">✕</button>
-  <div class="menu-overlay-inner">
-    <a class="menu-nav-item" href="#value" onclick="closeMenu()">
-      <span class="menu-nav-label" data-i18n="nav-proposition">Proposition</span>
-      <span class="menu-nav-num">01</span>
-    </a>
-    <a class="menu-nav-item" href="#proof" onclick="closeMenu()">
-      <span class="menu-nav-label" data-i18n="nav-results">Résultats</span>
-      <span class="menu-nav-num">02</span>
-    </a>
-    <a class="menu-nav-item" href="#exp" onclick="closeMenu()">
-      <span class="menu-nav-label" data-i18n="nav-exp">Parcours</span>
-      <span class="menu-nav-num">03</span>
-    </a>
-    <a class="menu-nav-item" href="#skills-intl" onclick="closeMenu()">
-      <span class="menu-nav-label" data-i18n="nav-skills">Compétences</span>
-      <span class="menu-nav-num">04</span>
-    </a>
-    <a class="menu-nav-item" href="#contact" onclick="closeMenu()">
-      <span class="menu-nav-label" data-i18n="nav-contact">Contact</span>
-      <span class="menu-nav-num">05</span>
-    </a>
-    <div class="menu-footer">
-      <a href="#contact" class="menu-footer-cta" onclick="closeMenu()" data-i18n="hero-cta1">Me recruter →</a>
-      <div class="menu-lang">
-        <button class="menu-lang-btn active" id="ml-fr" onclick="setLang('fr')">FR</button>
-        <button class="menu-lang-btn" id="ml-en" onclick="setLang('en')">EN</button>
-      </div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-item" onclick="navTo('value')"><span class="mm-label" data-i18n="nav-proposition">Proposition</span><span class="mm-arrow">→</span></div>
+  <div class="mm-item" onclick="navTo('proof')"><span class="mm-label" data-i18n="nav-results">Résultats</span><span class="mm-arrow">→</span></div>
+  <div class="mm-item" onclick="navTo('exp')"><span class="mm-label" data-i18n="nav-exp">Parcours</span><span class="mm-arrow">→</span></div>
+  <div class="mm-item" onclick="navTo('skills-intl')"><span class="mm-label" data-i18n="nav-skills">Compétences</span><span class="mm-arrow">→</span></div>
+  <div class="mm-item" onclick="navTo('contact')"><span class="mm-label" data-i18n="nav-contact">Contact</span><span class="mm-arrow">→</span></div>
+  <div class="mm-bottom">
+    <div class="mm-lang">
+      <button class="mm-lang-btn active" id="mm-fr" onclick="setLang('fr')">FR</button>
+      <button class="mm-lang-btn" id="mm-en" onclick="setLang('en')">EN</button>
     </div>
+    <a href="#contact" class="mm-cta" onclick="closeMobileMenu()" data-i18n="hero-cta1">Me recruter →</a>
   </div>
 </div>
 
 <nav>
   <a href="#hero" class="nav-logo">MRC<em>.</em></a>
   <ul class="nav-links">
-    <li><a href="#value" data-i18n="nav-proposition">Proposition</a></li>
-    <li><a href="#proof" data-i18n="nav-results">Résultats</a></li>
-    <li><a href="#exp" data-i18n="nav-exp">Parcours</a></li>
-    <li><a href="#skills-intl" data-i18n="nav-skills">Compétences</a></li>
-    <li><a href="#contact" class="nav-cta" data-i18n="nav-contact">Contact</a></li>
+    <li><a onclick="navTo('value')" data-i18n="nav-proposition">Proposition</a></li>
+    <li><a onclick="navTo('proof')" data-i18n="nav-results">Résultats</a></li>
+    <li><a onclick="navTo('exp')" data-i18n="nav-exp">Parcours</a></li>
+    <li><a onclick="navTo('skills-intl')" data-i18n="nav-skills">Compétences</a></li>
+    <li><a onclick="navTo('contact')" class="nav-cta" data-i18n="nav-contact">Contact</a></li>
     <li>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('fr')">FR</button>
@@ -346,7 +317,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
       </div>
     </li>
   </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -390,28 +361,8 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
 
 <section id="value" style="padding:1.5rem 2rem">
   <div class="value-inner">
-    <div class="vc tech">
-      <div class="vc-tag">Tech & Digital</div>
-      <h3 data-i18n="vc-tech-title">Un manager qui<br>comprend la tech.</h3>
-      <p data-i18n="vc-tech-body">Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, de comprendre leurs contraintes et de traduire les enjeux produit en décisions concrètes.</p>
-      <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-tech-li1">Lecture des enjeux produit et données</div>
-        <div class="vc-li" data-i18n="vc-tech-li2">Coordination équipes tech / business</div>
-        <div class="vc-li" data-i18n="vc-tech-li3">Vision IA appliquée au management</div>
-        <div class="vc-li" data-i18n="vc-tech-li4">Curiosité systémique et culture digitale</div>
-      </div>
-    </div>
-    <div class="vc luxe">
-      <div class="vc-tag">Luxury & Image</div>
-      <h3 data-i18n="vc-luxe-title">Des compétences<br>au service de l'image.</h3>
-      <p data-i18n="vc-luxe-body">Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.</p>
-      <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-luxe-li1">Direction de projet de bout en bout</div>
-        <div class="vc-li" data-i18n="vc-luxe-li2">Relation client multilingue (FR/EN)</div>
-        <div class="vc-li" data-i18n="vc-luxe-li3">Sens du détail et culture visuelle</div>
-        <div class="vc-li" data-i18n="vc-luxe-li4">Profil international — Vancouver, 50 nations</div>
-      </div>
-    </div>
+    <div class="vc tech"><div class="vc-tag">Tech & Digital</div><h3 data-i18n="vc-tech-title">Un manager qui<br>comprend la tech.</h3><p data-i18n="vc-tech-body">Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, de comprendre leurs contraintes et de traduire les enjeux produit en décisions concrètes.</p><div class="vc-list"><div class="vc-li" data-i18n="vc-tech-li1">Lecture des enjeux produit et données</div><div class="vc-li" data-i18n="vc-tech-li2">Coordination équipes tech / business</div><div class="vc-li" data-i18n="vc-tech-li3">Vision IA appliquée au management</div><div class="vc-li" data-i18n="vc-tech-li4">Curiosité systémique et culture digitale</div></div></div>
+    <div class="vc luxe"><div class="vc-tag">Luxury & Image</div><h3 data-i18n="vc-luxe-title">Des compétences<br>au service de l'image.</h3><p data-i18n="vc-luxe-body">Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.</p><div class="vc-list"><div class="vc-li" data-i18n="vc-luxe-li1">Direction de projet de bout en bout</div><div class="vc-li" data-i18n="vc-luxe-li2">Relation client multilingue (FR / EN)</div><div class="vc-li" data-i18n="vc-luxe-li3">Sens du détail et culture visuelle</div><div class="vc-li" data-i18n="vc-luxe-li4">Profil international — Vancouver, 50 nations</div></div></div>
   </div>
 </section>
 
@@ -430,36 +381,9 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
     <p class="sec-eye" data-i18n="exp-eye">Terrain</p>
     <h2 data-i18n="exp-title">Expériences professionnelles</h2>
     <div class="exp-list">
-      <div class="ei">
-        <div class="ei-icon">⚡</div>
-        <div>
-          <div class="ei-head" data-i18n="exp1-head" data-date="2023–2024">Chef de projet — Lancement de marque</div>
-          <div class="ei-co">Ynov Campus · Toulouse</div>
-          <div class="ei-desc" data-i18n="exp1-desc">Direction d'une équipe de 6 recrutée par compétences (design, marketing, animation 3D). Lancement complet d'une marque de vêtement : collection 3 produits, promotion, buyer persona, étude de marché et présentation à un jury de 5 experts.</div>
-          <div class="ei-tags"><span class="et">Management</span><span class="et">Design 2D/3D</span><span class="et">Maya / Blender</span><span class="et">Suite Adobe</span><span class="et">Marketing</span></div>
-        </div>
-        <div class="ei-date">2023–2024</div>
-      </div>
-      <div class="ei">
-        <div class="ei-icon">🛒</div>
-        <div>
-          <div class="ei-head" data-i18n="exp2-head" data-date="2025 · 3 mois">Conseiller de vente — Textile</div>
-          <div class="ei-co">Intersport · Pamiers</div>
-          <div class="ei-desc" data-i18n="exp2-desc">Gestion autonome de l'ensemble des rayons textiles : réception des stocks, inventaire, réassort, facing et gestion des flux clients en continu.</div>
-          <div class="ei-tags"><span class="et">Retail ops</span><span class="et">Gestion stocks</span><span class="et">Relation client</span><span class="et">Autonomie</span></div>
-        </div>
-        <div class="ei-date" data-i18n="date-3m">2025 · 3 mois</div>
-      </div>
-      <div class="ei">
-        <div class="ei-icon">🌊</div>
-        <div>
-          <div class="ei-head" data-i18n="exp3-head" data-date="2025 · 3 mois">Hydroguide — Événement international</div>
-          <div class="ei-co">EDF · Tarascon-sur-Ariège</div>
-          <div class="ei-desc" data-i18n="exp3-desc">Prévention des risques rivière et barrages EDF. Stand aux Championnats du Monde Junior de Canoë-Kayak à Foix : 600 athlètes, 50 nations, 2 000 visiteurs/jour. Communication bilingue FR/EN avec Teams.</div>
-          <div class="ei-tags"><span class="et">Événementiel</span><span class="et">Bilingue FR/EN</span><span class="et">Prévention</span><span class="et">Teams</span></div>
-        </div>
-        <div class="ei-date" data-i18n="date-3m">2025 · 3 mois</div>
-      </div>
+      <div class="ei"><div class="ei-icon">⚡</div><div><div class="ei-head" data-i18n="exp1-head" data-date="2023–2024">Chef de projet — Lancement de marque</div><div class="ei-co">Ynov Campus · Toulouse</div><div class="ei-desc" data-i18n="exp1-desc">Direction d'une équipe de 6 recrutée par compétences (design, marketing, animation 3D). Lancement complet d'une marque de vêtement : collection 3 produits, promotion, buyer persona, étude de marché et présentation à un jury de 5 experts.</div><div class="ei-tags"><span class="et">Management</span><span class="et">Design 2D/3D</span><span class="et">Maya / Blender</span><span class="et">Suite Adobe</span><span class="et">Marketing</span></div></div><div class="ei-date">2023–2024</div></div>
+      <div class="ei"><div class="ei-icon">🛒</div><div><div class="ei-head" data-i18n="exp2-head" data-date="2025 · 3 mois">Conseiller de vente — Textile</div><div class="ei-co">Intersport · Pamiers</div><div class="ei-desc" data-i18n="exp2-desc">Gestion autonome de l'ensemble des rayons textiles : réception des stocks, inventaire, réassort, facing et gestion des flux clients en continu.</div><div class="ei-tags"><span class="et">Retail ops</span><span class="et">Gestion stocks</span><span class="et">Relation client</span><span class="et">Autonomie</span></div></div><div class="ei-date" data-i18n="date-3m">2025 · 3 mois</div></div>
+      <div class="ei"><div class="ei-icon">🌊</div><div><div class="ei-head" data-i18n="exp3-head" data-date="2025 · 3 mois">Hydroguide — Événement international</div><div class="ei-co">EDF · Tarascon-sur-Ariège</div><div class="ei-desc" data-i18n="exp3-desc">Prévention des risques rivière et barrages EDF. Stand aux Championnats du Monde Junior de Canoë-Kayak à Foix : 600 athlètes, 50 nations, 2 000 visiteurs/jour. Communication bilingue FR/EN avec Teams.</div><div class="ei-tags"><span class="et">Événementiel</span><span class="et">Bilingue FR/EN</span><span class="et">Prévention</span><span class="et">Teams</span></div></div><div class="ei-date" data-i18n="date-3m">2025 · 3 mois</div></div>
     </div>
   </div>
 </section>
@@ -468,21 +392,8 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
   <div>
     <p class="sec-eye" data-i18n="skills-eye">Boîte à outils</p>
     <h2 data-i18n="skills-title">Compétences</h2>
-    <div class="skill-box">
-      <div class="sg-lbl" data-i18n="hard-skills">Hard skills</div>
-      <div class="sr"><span class="sr-name" data-i18n="sk1">Organisation des flux</span><div class="sb-wrap"><div class="sb" style="width:65%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk2">Miro / Trello / Outils collab</span><div class="sb-wrap"><div class="sb" style="width:70%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk3">Design 2D/3D (Maya, Blender, Adobe)</span><div class="sb-wrap"><div class="sb" style="width:72%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk4">Excel / Microsoft Office</span><div class="sb-wrap"><div class="sb" style="width:45%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk5">Analyse de données</span><div class="sb-wrap"><div class="sb" style="width:35%"></div></div></div>
-    </div>
-    <div class="skill-box">
-      <div class="sg-lbl" data-i18n="soft-skills">Soft skills</div>
-      <div class="sr"><span class="sr-name" data-i18n="sk6">Management d'équipe</span><div class="sb-wrap"><div class="sb g" style="width:78%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk7">Relation client (face-à-face)</span><div class="sb-wrap"><div class="sb g" style="width:72%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk8">Planification stratégique</span><div class="sb-wrap"><div class="sb g" style="width:62%"></div></div></div>
-      <div class="sr"><span class="sr-name" data-i18n="sk9">Rigueur analytique</span><div class="sb-wrap"><div class="sb g" style="width:55%"></div></div></div>
-    </div>
+    <div class="skill-box"><div class="sg-lbl" data-i18n="hard-skills">Hard skills</div><div class="sr"><span class="sr-name" data-i18n="sk1">Organisation des flux</span><div class="sb-wrap"><div class="sb" style="width:65%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk2">Miro / Trello / Outils collab</span><div class="sb-wrap"><div class="sb" style="width:70%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk3">Design 2D/3D (Maya, Blender, Adobe)</span><div class="sb-wrap"><div class="sb" style="width:72%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk4">Excel / Microsoft Office</span><div class="sb-wrap"><div class="sb" style="width:45%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk5">Analyse de données</span><div class="sb-wrap"><div class="sb" style="width:35%"></div></div></div></div>
+    <div class="skill-box"><div class="sg-lbl" data-i18n="soft-skills">Soft skills</div><div class="sr"><span class="sr-name" data-i18n="sk6">Management d'équipe</span><div class="sb-wrap"><div class="sb g" style="width:78%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk7">Relation client (face-à-face)</span><div class="sb-wrap"><div class="sb g" style="width:72%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk8">Planification stratégique</span><div class="sb-wrap"><div class="sb g" style="width:62%"></div></div></div><div class="sr"><span class="sr-name" data-i18n="sk9">Rigueur analytique</span><div class="sb-wrap"><div class="sb g" style="width:55%"></div></div></div></div>
   </div>
   <div>
     <p class="sec-eye" style="opacity:0;pointer-events:none">—</p>
@@ -490,20 +401,8 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
     <div class="intl-box">
       <p class="sec-eye" data-i18n="intl-eye">International</p>
       <h2 data-i18n="intl-title">Vancouver · 4 mois</h2>
-      <div class="intl-top">
-        <div class="intl-flag-box">CA</div>
-        <div class="intl-info">
-          <h3>BCIT — Business and Media</h3>
-          <p data-i18n="intl-body">Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.</p>
-        </div>
-      </div>
-      <div class="mod-list">
-        <div class="mod"><div class="md"></div><span>Operations Management</span></div>
-        <div class="mod"><div class="md"></div><span>Business Mathematics</span></div>
-        <div class="mod"><div class="md"></div><span>Business Communication</span></div>
-        <div class="mod"><div class="md"></div><span>Supply Chain — Miro / Trello</span></div>
-        <div class="mod"><div class="md"></div><span data-i18n="intl-mod">Environnement 50+ nations</span></div>
-      </div>
+      <div class="intl-top"><div class="intl-flag-box">CA</div><div class="intl-info"><h3>BCIT — Business and Media</h3><p data-i18n="intl-body">Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.</p></div></div>
+      <div class="mod-list"><div class="mod"><div class="md"></div><span>Operations Management</span></div><div class="mod"><div class="md"></div><span>Business Mathematics</span></div><div class="mod"><div class="md"></div><span>Business Communication</span></div><div class="mod"><div class="md"></div><span>Supply Chain — Miro / Trello</span></div><div class="mod"><div class="md"></div><span data-i18n="intl-mod">Environnement 50+ nations</span></div></div>
     </div>
   </div>
 </div>
@@ -513,22 +412,8 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
     <p class="sec-eye" data-i18n="vision-eye">Vision & projet</p>
     <h2 data-i18n="vision-title">L'IA comme levier business</h2>
     <div class="vis-card">
-      <div>
-        <div class="vtag" data-i18n="vision-tag">En cours</div>
-        <h3 data-i18n="vision-h3">Construction d'un réseau neuronal — exploration active</h3>
-        <p data-i18n="vision-p1">Apprentissage du code et premier modèle d'IA. Pas pour devenir ingénieur — pour comprendre les mécanismes et identifier les applications concrètes dans les secteurs retail, luxe et finance.</p>
-        <p data-i18n="vision-p2">Conviction : les métiers du management seront redéfinis par l'IA dans les 5 prochaines années. Je veux être du bon côté.</p>
-        <div class="vis-proof">
-          <div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp1">Ce site a été conçu et généré avec l'aide de l'IA</span></div>
-          <div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp2">Exploration active des LLMs et de leurs cas d'usage business</span></div>
-          <div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp3">Projet en cours : réseau neuronal from scratch</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="prog-item"><div class="prog-top"><span data-i18n="prog1">Fondamentaux IA / ML</span><span>60%</span></div><div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div></div>
-        <div class="prog-item"><div class="prog-top"><span data-i18n="prog2">Python / code</span><span>30%</span></div><div class="prog-bar"><div class="prog-fill" style="width:30%"></div></div></div>
-        <div class="prog-item"><div class="prog-top"><span data-i18n="prog3">Réseau neuronal (projet)</span><span>15%</span></div><div class="prog-bar"><div class="prog-fill" style="width:15%"></div></div></div>
-      </div>
+      <div><div class="vtag" data-i18n="vision-tag">En cours</div><h3 data-i18n="vision-h3">Construction d'un réseau neuronal — exploration active</h3><p data-i18n="vision-p1">Apprentissage du code et premier modèle d'IA. Pas pour devenir ingénieur — pour comprendre les mécanismes et identifier les applications concrètes dans les secteurs retail, luxe et finance.</p><p data-i18n="vision-p2">Conviction : les métiers du management seront redéfinis par l'IA dans les 5 prochaines années. Je veux être du bon côté.</p><div class="vis-proof"><div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp1">Ce site a été conçu et généré avec l'aide de l'IA</span></div><div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp2">Exploration active des LLMs et de leurs cas d'usage business</span></div><div class="vp-item"><div class="vp-dot"></div><span data-i18n="vp3">Projet en cours : réseau neuronal from scratch</span></div></div></div>
+      <div><div class="prog-item"><div class="prog-top"><span data-i18n="prog1">Fondamentaux IA / ML</span><span>60%</span></div><div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div></div><div class="prog-item"><div class="prog-top"><span data-i18n="prog2">Python / code</span><span>30%</span></div><div class="prog-bar"><div class="prog-fill" style="width:30%"></div></div></div><div class="prog-item"><div class="prog-top"><span data-i18n="prog3">Réseau neuronal (projet)</span><span>15%</span></div><div class="prog-bar"><div class="prog-fill" style="width:15%"></div></div></div></div>
     </div>
   </div>
 </section>
@@ -549,16 +434,72 @@ footer{text-align:center;padding:1.5rem;font-size:0.72rem;color:#bbb;border-top:
 <footer>© 2026 Mathieu Riviere Combes — TBS Education · Paris</footer>
 
 <script>
+const sections = ['value','proof','exp','skills-intl','vision','contact'];
+let currentFocusIndex = 0;
+
+function navTo(sectionId) {
+  closeMobileMenu();
+  openFocus(sectionId);
+}
+
+function openFocus(sectionId) {
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+  currentFocusIndex = sections.indexOf(sectionId);
+  const clone = el.cloneNode(true);
+  clone.style.cssText = '';
+  const fc = document.getElementById('focusContent');
+  fc.innerHTML = '';
+  fc.appendChild(clone);
+  updateFocusNav();
+  const overlay = document.getElementById('focusOverlay');
+  overlay.classList.add('active');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFocus() {
+  document.getElementById('focusOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function focusNext() {
+  if (currentFocusIndex < sections.length - 1) openFocus(sections[currentFocusIndex + 1]);
+}
+
+function focusPrev() {
+  if (currentFocusIndex > 0) openFocus(sections[currentFocusIndex - 1]);
+}
+
+function updateFocusNav() {
+  document.getElementById('focusPrevBtn').disabled = currentFocusIndex === 0;
+  document.getElementById('focusNextBtn').disabled = currentFocusIndex === sections.length - 1;
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  const isOpen = menu.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeFocus(); closeMobileMenu(); } });
+
 const translations = {
   fr: {
-    "topbar":"Recherche d'alternance · Paris · Septembre 2026 · 1 an","topbar-cta":"Me contacter →",
-    "topbar-short":"Alternance · Paris · Sept. 2026","topbar-cta-short":"Contact →",
+    "topbar":"Recherche d'alternance · Paris · Septembre 2026 · 1 an","topbar-cta":"Me contacter →","topbar-short":"Alternance · Paris · Sept. 2026","topbar-cta-short":"Contact →",
     "nav-proposition":"Proposition","nav-results":"Résultats","nav-exp":"Parcours","nav-skills":"Compétences","nav-contact":"Contact",
     "hero-eyebrow":"Alternance 1 an · Paris · Sept. 2026","hero-sub":"Le manager qui comprend la tech.",
     "hero-body":"École de commerce, expérience internationale, curiosité active pour l'IA. Je ne code pas — je pilote, je structure, je décide. Je suis convaincu que les meilleurs managers de demain seront ceux qui parlent le langage du digital.",
     "hero-cta1":"Me recruter →","hero-cta2":"Voir les résultats",
-    "stat1":"Expériences","stat2":"Pays","stat3":"Nations","stat4":"Anglais","stat5":"Équipe gérée",
-    "chip-paris":"Paris · Sept. 2026","lang-fr":"Natif",
+    "stat1":"Expériences","stat2":"Pays","stat3":"Nations","stat4":"Anglais","stat5":"Équipe gérée","chip-paris":"Paris · Sept. 2026","lang-fr":"Natif",
     "vc-tech-title":"Un manager qui<br>comprend la tech.","vc-tech-body":"Pas un ingénieur. Le profil business capable de travailler avec des équipes tech, de comprendre leurs contraintes et de traduire les enjeux produit en décisions concrètes.",
     "vc-tech-li1":"Lecture des enjeux produit et données","vc-tech-li2":"Coordination équipes tech / business","vc-tech-li3":"Vision IA appliquée au management","vc-tech-li4":"Curiosité systémique et culture digitale",
     "vc-luxe-title":"Des compétences<br>au service de l'image.","vc-luxe-body":"Gestion de projet, relation client haute exigence, sens de l'esthétique et expérience internationale. Un profil formé à l'excellence opérationnelle.",
@@ -584,14 +525,12 @@ const translations = {
     "contact-eye":"Recruteurs, c'est ici","contact-title":"Alternance 1 an — Sept. 2026<br>Paris · Retail & Digital","contact-body":"Je cherche une alternance d'un an en management dans la tech ou le luxe à Paris. Si mon profil vous parle, parlons-nous."
   },
   en: {
-    "topbar":"Looking for a work-study · Paris · September 2026 · 1 year","topbar-cta":"Contact me →",
-    "topbar-short":"Work-study · Paris · Sept. 2026","topbar-cta-short":"Contact →",
+    "topbar":"Looking for a work-study · Paris · September 2026 · 1 year","topbar-cta":"Contact me →","topbar-short":"Work-study · Paris · Sept. 2026","topbar-cta-short":"Contact →",
     "nav-proposition":"Value Prop","nav-results":"Results","nav-exp":"Experience","nav-skills":"Skills","nav-contact":"Contact",
     "hero-eyebrow":"Work-study · 1 year · Paris · Sept. 2026","hero-sub":"The manager who understands tech.",
     "hero-body":"Business school graduate, international experience, active curiosity for AI. I don't code — I lead, I structure, I decide. I believe the best managers of tomorrow will be those who speak the language of digital.",
     "hero-cta1":"Hire me →","hero-cta2":"See results",
-    "stat1":"Experiences","stat2":"Countries","stat3":"Nations","stat4":"English","stat5":"Team led",
-    "chip-paris":"Paris · Sept. 2026","lang-fr":"Native",
+    "stat1":"Experiences","stat2":"Countries","stat3":"Nations","stat4":"English","stat5":"Team led","chip-paris":"Paris · Sept. 2026","lang-fr":"Native",
     "vc-tech-title":"A manager who<br>understands tech.","vc-tech-body":"Not an engineer. A business profile able to work with tech teams, understand their constraints and translate product challenges into concrete decisions.",
     "vc-tech-li1":"Reading product & data challenges","vc-tech-li2":"Bridging tech and business teams","vc-tech-li3":"AI vision applied to management","vc-tech-li4":"Systemic curiosity and digital culture",
     "vc-luxe-title":"Skills in service<br>of the brand.","vc-luxe-body":"Project management, high-standard client relations, aesthetic sense and international experience. A profile trained in operational excellence.",
@@ -624,23 +563,11 @@ function setLang(lang) {
     if (translations[lang] && translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
   });
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
-  document.getElementById('ml-fr').classList.toggle('active', lang === 'fr');
-  document.getElementById('ml-en').classList.toggle('active', lang === 'en');
+  const mmFr = document.getElementById('mm-fr');
+  const mmEn = document.getElementById('mm-en');
+  if (mmFr) mmFr.classList.toggle('active', lang === 'fr');
+  if (mmEn) mmEn.classList.toggle('active', lang === 'en');
   document.documentElement.lang = lang;
-}
-
-function toggleMenu() {
-  const overlay = document.getElementById('menuOverlay');
-  const burger = document.getElementById('hamburger');
-  const isOpen = overlay.classList.toggle('open');
-  burger.classList.toggle('open', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-}
-
-function closeMenu() {
-  document.getElementById('menuOverlay').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-  document.body.style.overflow = '';
 }
 
 const userLang = navigator.language || navigator.userLanguage;
