@@ -4,53 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mathieu Riviere Combes</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#f5f3ee;--surface:#fff;--black:#0f0f0e;--dark:#1c1c1a;--muted:#8a8784;--border:#e2dfd8;
   --accent:#3d9970;--accent-bg:#e6f2ec;--accent-border:#b2d8c4;
-  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--topbar-bg:#1a2e1a;
 }
-body.theme-tech{--accent:#3d9970;--accent-bg:#e6f2ec;--accent-border:#b2d8c4;--topbar-bg:#1a2e1a}
-body.theme-luxe{
-  --accent:#b8912a;--accent-bg:#fdf4e3;--accent-border:#e8d5a0;
-  --topbar-bg:#1a1508;--bg:#f8f6f1;--border:#ece8de;
-  --fd:'Playfair Display',serif;
-}
-body.theme-luxe h1,body.theme-luxe h2{font-family:'Playfair Display',serif;letter-spacing:0.01em}
-body.theme-luxe .nav-logo,body.theme-luxe .focus-logo{font-family:'Playfair Display',serif}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--dark);font-family:var(--fb);overflow-x:hidden;font-size:15px;transition:background 0.4s,color 0.3s}
-
-/* ── SPLASH ── */
-.splash{position:fixed;inset:0;z-index:500;background:#080808;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;transition:opacity 0.4s ease}
-.splash.hidden{opacity:0;pointer-events:none}
-.splash-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#f5f3ee;letter-spacing:-0.03em}
-.splash-logo em{font-style:normal;color:#3d9970}
-.splash-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.3rem,3vw,1.9rem);color:#f5f3ee;text-align:center;line-height:1.25;letter-spacing:-0.02em}
-.splash-sub{font-size:0.83rem;color:#555;text-align:center;max-width:340px;line-height:1.7}
-.splash-btns{display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center;width:100%;max-width:540px}
-.splash-btn{flex:1;min-width:210px;max-width:250px;padding:1.5rem 1.25rem;border-radius:1.25rem;font-weight:700;font-size:0.9rem;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;text-align:left;position:relative;overflow:hidden}
-.splash-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.45)}
-.splash-btn.tech{background:linear-gradient(135deg,#0d1f0d,#1a3a1a);border:1px solid #2a5a2a;color:#f5f3ee}
-.splash-btn.luxe{background:linear-gradient(135deg,#1a1408,#2e2410);border:1px solid #5a4a18;color:#f5f3ee}
-.splash-btn-icon{font-size:1.5rem;margin-bottom:0.65rem;display:block}
-.splash-btn-title{font-family:'Syne',sans-serif;font-size:1rem;display:block;margin-bottom:0.3rem}
-.splash-btn.tech .splash-btn-title{color:#3d9970}
-.splash-btn.luxe .splash-btn-title{color:#d4a855}
-.splash-btn-sub{font-size:0.71rem;font-weight:400;color:#777;display:block;line-height:1.5}
-.splash-skip{font-size:0.72rem;color:#333;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
-.splash-skip:hover{color:#888}
+body{background:var(--bg);color:var(--dark);font-family:var(--fb);overflow-x:hidden;font-size:15px}
 
 /* ── TOPBAR ── */
-.topbar{background:var(--topbar-bg,#2a6049);color:#fff;text-align:center;padding:0.55rem 1rem;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;position:sticky;top:0;z-index:101;transition:background 0.4s}
+.topbar{background:var(--topbar-bg);color:#fff;text-align:center;padding:0.55rem 1rem;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;position:sticky;top:0;z-index:101}
 .topbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .topbar-mobile{display:none}
 
 /* ── NAV ── */
-nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:background 0.4s}
-body.theme-luxe nav{background:rgba(248,246,241,0.95)}
+nav{position:sticky;top:36px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.85rem 2rem;background:rgba(245,243,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--fd);font-weight:700;font-size:0.95rem;letter-spacing:-0.02em;color:var(--black);text-decoration:none}
 .nav-logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;gap:1.25rem;list-style:none;align-items:center}
@@ -60,9 +31,6 @@ body.theme-luxe nav{background:rgba(248,246,241,0.95)}
 .lang-toggle{display:flex;gap:0;border:1px solid var(--border);border-radius:2rem;overflow:hidden;background:var(--surface)}
 .lang-btn{padding:0.28rem 0.7rem;font-size:0.7rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s}
 .lang-btn.active{background:var(--black);color:var(--bg)}
-.profile-switcher{display:none;align-items:center;gap:0.45rem;border:1.5px solid var(--accent);border-radius:2rem;padding:0.3rem 0.85rem;font-size:0.7rem;font-weight:600;color:var(--accent);cursor:pointer;background:var(--accent-bg);white-space:nowrap;transition:opacity 0.2s}
-.profile-switcher:hover{opacity:0.75}
-.profile-switcher.visible{display:flex}
 
 /* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
@@ -83,8 +51,6 @@ body.theme-luxe nav{background:rgba(248,246,241,0.95)}
 .mm-lang-btn{padding:0.3rem 0.85rem;font-size:0.7rem;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted)}
 .mm-lang-btn.active{background:var(--black);color:var(--bg)}
 .mm-cta{background:var(--black);color:var(--bg);padding:0.5rem 1.1rem;border-radius:2rem;font-size:0.78rem;font-weight:500;text-decoration:none}
-.mm-switch{display:none;border:1.5px solid var(--accent);background:var(--accent-bg);color:var(--accent);padding:0.45rem 0.9rem;border-radius:2rem;font-size:0.72rem;font-weight:600;cursor:pointer}
-.mm-switch.visible{display:block}
 
 /* ── FOCUS OVERLAY ── */
 .focus-overlay{position:fixed;inset:0;background:var(--bg);z-index:300;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
@@ -101,14 +67,14 @@ body.theme-luxe nav{background:rgba(248,246,241,0.95)}
 
 /* ── HERO ── */
 #hero{padding:2.5rem 2rem 0;position:relative;overflow:hidden}
-.hero-blob{position:absolute;top:-60px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--accent-bg);opacity:0.6;pointer-events:none;transition:background 0.5s}
+.hero-blob{position:absolute;top:-60px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--accent-bg);opacity:0.6;pointer-events:none}
 .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:2.5rem;align-items:start;position:relative}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:0.45rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;transition:all 0.4s}
-.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;transition:background 0.4s}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.45rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.02;letter-spacing:-0.04em;color:var(--black);margin-bottom:0.4rem;transition:font-family 0.3s}
-.h1-sub{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:1rem;transition:color 0.4s}
-.hero-body{font-size:0.87rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:1.5rem}
+h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.02;letter-spacing:-0.04em;color:var(--black);margin-bottom:0.4rem}
+.h1-sub{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);margin-bottom:1rem}
+.hero-body{font-size:0.87rem;color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:1.5rem}
 .hero-actions{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .btn-dark{background:var(--black);color:var(--bg);padding:0.62rem 1.4rem;border-radius:2rem;font-weight:500;font-size:0.83rem;text-decoration:none;display:inline-block;transition:transform 0.15s}
 .btn-dark:hover{transform:translateY(-1px)}
@@ -132,30 +98,21 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line
 .lang-code{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--black)}
 .lang-lvl{font-size:0.65rem;color:var(--muted);margin-top:0.1rem}
 
-/* ── VALUE ── */
-#value{padding:1.5rem 2rem;background:var(--black);transition:background 0.4s}
-.value-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.vc{background:#181816;border:1px solid #282826;border-radius:1.25rem;padding:1.75rem;position:relative;overflow:hidden;transition:opacity 0.4s,transform 0.4s,border-color 0.3s}
-.vc.dimmed{opacity:0.25;transform:scale(0.97)}
-.vc::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;opacity:0.07;pointer-events:none}
-.vc.tech::after{background:#3d9970}
-.vc.luxe::after{background:#d4a855}
-.vc-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:2rem;margin-bottom:1rem}
-.vc.tech .vc-tag{background:rgba(61,153,112,0.15);color:#3d9970;border:1px solid rgba(61,153,112,0.25)}
-.vc.luxe .vc-tag{background:rgba(212,168,85,0.12);color:#d4a855;border:1px solid rgba(212,168,85,0.2)}
-.vc h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#f5f3ee;line-height:1.2;margin-bottom:0.65rem}
-body.theme-luxe .vc.luxe h3{font-family:'Playfair Display',serif}
-.vc p{font-size:0.85rem;color:#aaa;line-height:1.8}
-.vc-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.45rem}
+/* ── VALUE (single card, non-sectoriel) ── */
+#value{padding:1.5rem 2rem;background:var(--black)}
+.value-inner{max-width:1100px;margin:0 auto}
+.vc{background:#181816;border:1px solid #282826;border-radius:1.25rem;padding:2rem;position:relative;overflow:hidden}
+.vc::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;opacity:0.07;pointer-events:none;background:#3d9970}
+.vc-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:2rem;margin-bottom:1rem;background:rgba(61,153,112,0.15);color:#3d9970;border:1px solid rgba(61,153,112,0.25)}
+.vc h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:#f5f3ee;line-height:1.25;margin-bottom:0.75rem}
+.vc p{font-size:0.87rem;color:#aaa;line-height:1.8;max-width:640px}
+.vc-list{margin-top:1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:0.55rem}
 .vc-li{display:flex;align-items:start;gap:0.55rem;font-size:0.82rem;color:#888}
-.vc-li::before{content:'→';font-size:0.75rem;flex-shrink:0;margin-top:0.05rem}
-.vc.tech .vc-li::before{color:#3d9970}
-.vc.luxe .vc-li::before{color:#d4a855}
+.vc-li::before{content:'→';font-size:0.75rem;flex-shrink:0;margin-top:0.05rem;color:#3d9970}
 
-/* ── PROFIL INTRO (shown below value) ── */
+/* ── PROFIL INTRO ── */
 #profil-intro{padding:2rem;max-width:1100px;margin:0 auto}
 .pi-card{border-radius:1.25rem;padding:2rem;border:1px solid var(--border);background:var(--surface)}
-body.theme-luxe .pi-card{background:linear-gradient(135deg,#fdf8ef,#f8f4eb);border-color:#e8d5a0}
 .pi-tag{display:inline-flex;align-items:center;gap:0.4rem;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2rem;padding:0.28rem 0.8rem;font-size:0.7rem;font-weight:500;color:var(--accent);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.06em}
 .pi-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent)}
 .pi-card h3{font-family:var(--fd);font-weight:700;font-size:1.15rem;color:var(--black);margin-bottom:0.85rem;line-height:1.3}
@@ -166,10 +123,10 @@ body.theme-luxe .pi-card{background:linear-gradient(135deg,#fdf8ef,#f8f4eb);bord
 
 /* ── PROOF ── */
 #proof{padding:2rem;max-width:1100px;margin:0 auto}
-.sec-eye{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;transition:color 0.4s}
+.sec-eye{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
 h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem;line-height:1.1}
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem}
-.pc{background:var(--surface);border:1px solid var(--border);border-radius:1.1rem;padding:1.4rem;transition:box-shadow 0.2s,transform 0.2s,border-color 0.4s}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:1.1rem;padding:1.4rem;transition:box-shadow 0.2s,transform 0.2s}
 .pc:hover{box-shadow:0 6px 22px rgba(0,0,0,0.07);transform:translateY(-2px)}
 .pc-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-0.04em;color:var(--black);line-height:1;margin-bottom:0.25rem}
 .pc-num span{font-size:1rem;color:var(--accent)}
@@ -186,7 +143,6 @@ h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);lett
 .ei-head{font-family:'Syne',sans-serif;font-weight:700;font-size:0.87rem;color:var(--black);margin-bottom:0.12rem}
 .ei-co{font-size:0.74rem;color:var(--muted);margin-bottom:0.4rem}
 .ei-desc{font-size:0.79rem;color:#888;line-height:1.65}
-.ei-accent{font-size:0.78rem;color:var(--accent);font-weight:500;margin-top:0.5rem;font-style:italic}
 .ei-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
 .et{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:0.15rem 0.55rem;font-size:0.67rem;color:var(--muted)}
 .et.accent{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent)}
@@ -229,13 +185,10 @@ h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.5vw,2rem);lett
 /* ── CONTACT ── */
 #contact{padding:2rem}
 .cc{max-width:1100px;margin:0 auto;background:var(--black);border-radius:1.5rem;padding:3rem;text-align:center;position:relative;overflow:hidden}
-.cc::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,153,112,0.07) 0%,transparent 70%);pointer-events:none;transition:background 0.4s}
-body.theme-luxe .cc::before{background:radial-gradient(circle,rgba(212,168,85,0.07) 0%,transparent 70%)}
+.cc::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,153,112,0.07) 0%,transparent 70%);pointer-events:none}
 .cc .sec-eye{color:#3d9970}
-body.theme-luxe .cc .sec-eye{color:#d4a855}
 .cc h2{color:#f5f3ee;margin-bottom:0.75rem;font-family:'Syne',sans-serif}
-body.theme-luxe .cc h2{font-family:'Playfair Display',serif}
-.cc p{font-size:0.87rem;color:#aaa;max-width:420px;margin:0 auto 2rem;line-height:1.75}
+.cc p{font-size:0.87rem;color:#aaa;max-width:440px;margin:0 auto 2rem;line-height:1.75}
 .clinks{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
 .cl{display:flex;align-items:center;gap:0.45rem;background:#1e1e1c;border:1px solid #2a2a28;border-radius:2rem;padding:0.6rem 1.15rem;font-size:0.8rem;color:#ccc;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
 .cl:hover{border-color:#555;transform:translateY(-2px)}
@@ -254,7 +207,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 /* ── MOBILE ── */
 @media(max-width:768px){
   .topbar{display:none}
-  .topbar-mobile{display:block;background:var(--topbar-bg,#2a6049);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.7rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;position:sticky;top:0;z-index:101;transition:background 0.4s}
+  .topbar-mobile{display:block;background:var(--topbar-bg);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.7rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;position:sticky;top:0;z-index:101}
   .topbar-mobile a{color:#fff;text-decoration:underline;text-underline-offset:2px}
   nav{top:32px;padding:0.85rem 1.25rem}
   .nav-links{display:none}
@@ -276,7 +229,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   .st-num{font-size:1rem}
   .st-lbl{font-size:0.52rem}
   #value{padding:1.25rem}
-  .value-inner{grid-template-columns:1fr;gap:0.85rem}
+  .vc-list{grid-template-columns:1fr}
   #profil-intro{padding:1.5rem 1.25rem}
   #proof{padding:1.5rem 1.25rem}
   .proof-grid{grid-template-columns:1fr;gap:0.75rem}
@@ -299,8 +252,6 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   .focus-bar{padding:0.85rem 1.25rem}
   .focus-content{padding:1.5rem 1.25rem 3rem}
   .focus-nav-btn{display:none}
-  .splash-btns{flex-direction:column;align-items:center}
-  .splash-btn{width:100%;max-width:300px;min-width:unset}
   .countdown{gap:1rem}
   .cd-num{font-size:1.25rem}
   .chips{gap:0.4rem}
@@ -314,30 +265,8 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 </head>
 <body>
 
-<!-- SPLASH -->
-<div class="splash" id="splash">
-  <div class="splash-logo">MRC<em>.</em></div>
-  <div style="text-align:center">
-    <div class="splash-title" id="splash-title">Bonjour, je suis Mathieu.<br>Quel est votre secteur ?</div>
-    <div class="splash-sub" id="splash-sub" style="margin-top:0.75rem">Choisissez votre profil pour une expérience personnalisée.</div>
-  </div>
-  <div class="splash-btns">
-    <button class="splash-btn tech" onclick="chooseProfil('tech')">
-      <span class="splash-btn-icon">⚡</span>
-      <span class="splash-btn-title">Tech & Digital</span>
-      <span class="splash-btn-sub" id="sb-tech-sub">Supply Chain · Ops · Gestion de projet digital</span>
-    </button>
-    <button class="splash-btn luxe" onclick="chooseProfil('luxe')">
-      <span class="splash-btn-icon">✦</span>
-      <span class="splash-btn-title">Luxe & Image</span>
-      <span class="splash-btn-sub" id="sb-luxe-sub">Retail management · Supply Chain luxe · Excellence</span>
-    </button>
-  </div>
-  <span class="splash-skip" id="splash-skip" onclick="chooseProfil('all')">Voir le profil complet →</span>
-</div>
-
-<div class="topbar">🎯 <span data-i18n="topbar">Recherche d'alternance · Paris · Septembre 2026 · 1 an</span> — <a href="#contact" data-i18n="topbar-cta">Me contacter →</a></div>
-<div class="topbar-mobile">🎯 <span data-i18n="topbar-short">Alternance · Paris · Sept. 2026</span> — <a href="#contact" data-i18n="topbar-cta-short">Contact →</a></div>
+<div class="topbar">🎯 <span data-i18n="topbar">Recherche d'alternance · Toulouse / Paris · Septembre 2026 · 1 an</span> — <a href="#contact" data-i18n="topbar-cta">Me contacter →</a></div>
+<div class="topbar-mobile">🎯 <span data-i18n="topbar-short">Alternance · Toulouse/Paris · Sept. 2026</span> — <a href="#contact" data-i18n="topbar-cta-short">Contact →</a></div>
 
 <!-- FOCUS OVERLAY -->
 <div class="focus-overlay" id="focusOverlay">
@@ -363,7 +292,6 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   <div class="mm-item" onclick="navTo('contact')"><span class="mm-label" data-i18n="nav-contact">Contact</span><span class="mm-arrow">→</span></div>
   <div class="mm-bottom">
     <div class="mm-lang"><button class="mm-lang-btn active" id="mm-fr" onclick="setLang('fr')">FR</button><button class="mm-lang-btn" id="mm-en" onclick="setLang('en')">EN</button></div>
-    <button class="mm-switch" id="mmSwitch" onclick="resetProfil();closeMobileMenu()">⇄ Changer de profil</button>
     <a href="#contact" class="mm-cta" onclick="closeMobileMenu()" data-i18n="hero-cta1">Me recruter →</a>
   </div>
 </div>
@@ -378,7 +306,6 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
     <li><a onclick="navTo('skills-intl')" data-i18n="nav-skills">Compétences</a></li>
     <li><a onclick="navTo('vision')" data-i18n="nav-vision">Projets IA</a></li>
     <li><a onclick="navTo('contact')" class="nav-cta" data-i18n="nav-contact">Contact</a></li>
-    <li><div class="profile-switcher" id="profileSwitcher" onclick="resetProfil()"><span id="switcherLabel">⇄ Changer</span></div></li>
     <li><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
@@ -389,16 +316,16 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   <div class="hero-blob"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow" data-i18n="hero-eyebrow">Alternance 1 an · Paris · Sept. 2026</div>
+      <div class="hero-eyebrow" data-i18n="hero-eyebrow">Alternance 1 an · Toulouse / Paris · Sept. 2026</div>
       <h1>Mathieu<br>Riviere Combes</h1>
-      <p class="h1-sub" id="hero-sub-el" data-i18n="hero-sub">Le manager qui comprend la tech.</p>
-      <p class="hero-body" id="hero-body-el" data-i18n="hero-body">École de commerce, expérience internationale, curiosité active pour l'IA. Je ne code pas — je pilote, je structure, je décide. Je suis convaincu que les meilleurs managers de demain seront ceux qui parlent le langage du digital.</p>
+      <p class="h1-sub" data-i18n="hero-sub">Opérationnel dès le premier jour.</p>
+      <p class="hero-body" data-i18n="hero-body">Étudiant en Bachelor Retail &amp; Digital Management à TBS Education, je recherche une alternance d'un an à partir de septembre 2026. Une expérience terrain récente en supply chain (Colissimo, Groupe La Poste) confirme mon goût pour l'optimisation des flux et le pilotage d'équipe — ouvert à tous les secteurs dans le cadre de mon cursus.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-dark" data-i18n="hero-cta1">Me recruter →</a>
         <a onclick="navTo('proof')" class="btn-out" data-i18n="hero-cta2">Voir les résultats</a>
       </div>
       <div class="stats-row">
-        <div class="st"><div class="st-num">3<span>+</span></div><div class="st-lbl" data-i18n="stat1">Expériences</div></div>
+        <div class="st"><div class="st-num">4<span>+</span></div><div class="st-lbl" data-i18n="stat1">Expériences</div></div>
         <div class="st"><div class="st-num">2</div><div class="st-lbl" data-i18n="stat2">Pays</div></div>
         <div class="st"><div class="st-num">50</div><div class="st-lbl" data-i18n="stat3">Nations</div></div>
         <div class="st"><div class="st-num">C1</div><div class="st-lbl" data-i18n="stat4">Anglais</div></div>
@@ -410,7 +337,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
       <div class="chips">
         <span class="chip g">TBS Education · Toulouse</span>
         <span class="chip">Bachelor Management</span>
-        <span class="chip o" data-i18n="chip-paris">Paris · Sept. 2026</span>
+        <span class="chip o" data-i18n="chip-loc">Toulouse / Paris · Sept. 2026</span>
         <span class="chip">Retail & Digital Mgmt</span>
       </div>
       <div class="lang-row">
@@ -422,29 +349,18 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   </div>
 </section>
 
-<!-- VALUE -->
-<section id="value" style="padding:1.5rem 2rem">
+<!-- VALUE (une seule carte, non sectorielle) -->
+<section id="value">
   <div class="value-inner">
-    <div class="vc tech" id="vc-tech">
-      <div class="vc-tag">Tech & Digital</div>
-      <h3 data-i18n="vc-tech-title">Un manager qui<br>comprend la tech.</h3>
-      <p data-i18n="vc-tech-body">Pas un ingénieur. Le profil business capable de piloter des opérations dans des environnements tech, comprendre les contraintes des équipes et traduire les enjeux en décisions concrètes.</p>
+    <div class="vc">
+      <div class="vc-tag" data-i18n="vc-tag">Ce que j'apporte</div>
+      <h3 data-i18n="vc-title">Un profil opérationnel, formé au terrain,<br>capable de s'adapter à tout secteur.</h3>
+      <p data-i18n="vc-body">Ma polyvalence n'est pas un compromis : c'est le résultat d'un parcours volontairement diversifié — supply chain, retail, gestion de projet, événementiel international — qui m'a appris à être rapidement opérationnel, quel que soit l'environnement.</p>
       <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-tech-li1">Supply Chain & Ops en environnement digital</div>
-        <div class="vc-li" data-i18n="vc-tech-li2">Gestion de projet transversal tech/business</div>
-        <div class="vc-li" data-i18n="vc-tech-li3">Vision IA appliquée aux processus opérationnels</div>
-        <div class="vc-li" data-i18n="vc-tech-li4">Curiosité active pour les technologies émergentes</div>
-      </div>
-    </div>
-    <div class="vc luxe" id="vc-luxe">
-      <div class="vc-tag">Luxe & Image</div>
-      <h3 data-i18n="vc-luxe-title">L'excellence<br>comme standard.</h3>
-      <p data-i18n="vc-luxe-body">Un profil retail formé à l'organisation des flux, à la présentation produit et à la relation client haute exigence. Fasciné par la chaîne de valeur du luxe, de la matière au désir.</p>
-      <div class="vc-list">
-        <div class="vc-li" data-i18n="vc-luxe-li1">Retail management & supply chain luxe</div>
-        <div class="vc-li" data-i18n="vc-luxe-li2">Présentation produit · facing · merchandising</div>
-        <div class="vc-li" data-i18n="vc-luxe-li3">Relation client internationale (FR / EN)</div>
-        <div class="vc-li" data-i18n="vc-luxe-li4">Sensibilité mode, horlogerie, maroquinerie</div>
+        <div class="vc-li" data-i18n="vc-li1">Pilotage de flux logistiques (Atlas WMS)</div>
+        <div class="vc-li" data-i18n="vc-li2">Gestion et animation d'équipe</div>
+        <div class="vc-li" data-i18n="vc-li3">Gestion de projet transversal</div>
+        <div class="vc-li" data-i18n="vc-li4">Relation client et communication internationale (FR/EN)</div>
       </div>
     </div>
   </div>
@@ -452,67 +368,21 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 
 <!-- PROFIL INTRO -->
 <div id="profil-intro" class="fi">
-  <div style="padding:2rem;max-width:1100px;margin:0 auto">
-
-    <!-- TECH -->
-    <div id="pi-tech">
-      <p class="sec-eye">Pourquoi la tech</p>
-      <h2>Un profil business<br>au cœur de l'innovation</h2>
-      <div class="pi-card">
-        <div class="pi-tag">Conviction</div>
-        <h3>La technologie redéfinit tout — je veux être du bon côté</h3>
-        <p>Ma conviction est simple : la technologie n'est pas un secteur parmi d'autres, c'est le socle de l'avenir. Que ce soit l'IA générative, le hardware de demain ou le e-commerce, chaque innovation redéfinit les façons de travailler, de produire, d'organiser. Je veux évoluer dans des équipes qui construisent cet avenir — pas en tant qu'ingénieur, mais comme le profil business qui comprend les enjeux opérationnels là où les autres ne voient que du code.</p>
-        <p>Mon parcours en Supply Chain, Operations Management et gestion de projet me positionne naturellement sur des rôles à l'interface entre les équipes techniques et les décisions business.</p>
-        <div class="pi-targets">
-          <span class="pi-target">Supply Chain analyst</span>
-          <span class="pi-target">Operations coordinator</span>
-          <span class="pi-target">Chef de projet digital</span>
-          <span class="pi-target">Business analyst</span>
-          <span class="pi-target">Grands groupes tech</span>
-          <span class="pi-target">Scale-ups & startups</span>
-        </div>
-      </div>
+  <p class="sec-eye" data-i18n="pi-eye">Ce que je cherche</p>
+  <h2 data-i18n="pi-title">Retail, Digital &amp; Operations<br>Toulouse / Paris</h2>
+  <div class="pi-card">
+    <div class="pi-tag" data-i18n="pi-tag">Profil complet</div>
+    <h3 data-i18n="pi-h3">Un profil opérationnel, curieux, orienté terrain</h3>
+    <p data-i18n="pi-p1">Étudiant en Retail &amp; Digital Management à TBS Education, je cherche une alternance d'un an à Toulouse ou à Paris à partir de septembre 2026. Mon axe central : les opérations, la supply chain et la gestion de projet — ouvert à tous les secteurs dès lors que le poste s'inscrit dans le cadre de mon cursus.</p>
+    <p data-i18n="pi-p2">Mon parcours combine une expérience terrain récente en logistique (Colissimo, Groupe La Poste), des expériences retail et événementielles concrètes, et une formation académique orientée operations management, supply chain et marketing. J'apporte une curiosité active pour les nouvelles technologies, un anglais C1 acquis en conditions réelles à Vancouver, et une capacité prouvée à piloter des équipes et des projets de bout en bout.</p>
+    <div class="pi-targets">
+      <span class="pi-target">Supply Chain / Ops</span>
+      <span class="pi-target">Gestion de projet</span>
+      <span class="pi-target">Retail management</span>
+      <span class="pi-target">Distribution / E-commerce</span>
+      <span class="pi-target">Tous secteurs</span>
+      <span class="pi-target">Toulouse / Paris · 1 an · Sept. 2026</span>
     </div>
-
-    <!-- LUXE -->
-    <div id="pi-luxe" style="display:none">
-      <p class="sec-eye">Pourquoi le luxe</p>
-      <h2>La matière qui<br>devient désir</h2>
-      <div class="pi-card">
-        <div class="pi-tag">Conviction</div>
-        <h3>L'envers du décor d'un monde d'exception</h3>
-        <p>Ce qui me fascine dans le luxe, c'est la chaîne de valeur dans sa forme la plus exigeante : comment le choix d'une matière, d'un fournisseur, d'un procédé de fabrication se transforme en objet de désir universel. Le choix de la matière brute, le trajet jusqu'à l'atelier, la réflexion sur comment l'associer, la travailler — c'est la supply chain du luxe dans toute sa précision que je veux comprendre et contribuer à piloter.</p>
-        <p>Travailler dans une maison de luxe, c'est évoluer aux côtés de professionnels où l'excellence n'est pas un objectif — c'est le minimum. C'est cette exigence que je cherche.</p>
-        <div class="pi-targets">
-          <span class="pi-target">Assistant retail manager</span>
-          <span class="pi-target">Coordinateur supply chain luxe</span>
-          <span class="pi-target">Merchandising & ops</span>
-          <span class="pi-target">LVMH · Kering · Richemont</span>
-          <span class="pi-target">Hermès · Multimarque premium</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ALL (profil générique) -->
-    <div id="pi-all">
-      <p class="sec-eye">Ce que je cherche</p>
-      <h2>Retail, Digital & Operations<br>à Paris</h2>
-      <div class="pi-card">
-        <div class="pi-tag">Profil complet</div>
-        <h3>Un profil opérationnel, curieux, orienté terrain</h3>
-        <p>Étudiant en Retail & Digital Management à TBS Education, je cherche une alternance d'un an à Paris à partir de septembre 2026. Mon axe central : les opérations, la supply chain et la gestion de projet dans des environnements à forte exigence — qu'il s'agisse d'un grand groupe tech, d'une startup ambitieuse ou d'une maison de luxe parisienne.</p>
-        <p>Mon parcours combine des expériences terrain concrètes (retail, événementiel international, gestion de projet) et une formation académique orientée operations management, supply chain et marketing. J'apporte une curiosité active pour les nouvelles technologies, un C1 anglais acquis en conditions réelles à Vancouver, et une capacité prouvée à piloter des équipes et des projets de bout en bout.</p>
-        <div class="pi-targets">
-          <span class="pi-target">Supply Chain / Ops</span>
-          <span class="pi-target">Gestion de projet</span>
-          <span class="pi-target">Retail management</span>
-          <span class="pi-target">Tech & Digital</span>
-          <span class="pi-target">Luxe & Image</span>
-          <span class="pi-target">Paris · 1 an · Sept. 2026</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -521,20 +391,18 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   <p class="sec-eye" data-i18n="proof-eye">Ce que j'ai fait</p>
   <h2 data-i18n="proof-title">Résultats concrets</h2>
   <div class="proof-grid">
-    <div class="pc"><div class="pc-num">2 000<span>/j</span></div><div class="pc-title" data-i18n="proof1-title">Visiteurs gérés — EDF · Mondiaux Foix</div><div class="pc-sub" data-i18n="proof1-sub">600 athlètes, 50 nations. Relation public bilingue et représentation d'une marque nationale face à un public international sur 5 jours de compétition.</div></div>
+    <div class="pc"><div class="pc-num">4<span> postes</span></div><div class="pc-title" data-i18n="proof0-title">Progression rapide — Colissimo</div><div class="pc-sub" data-i18n="proof0-sub">Agent de production, agent de secteur (Atlas WMS), chef d'équipe : couverture complète d'une chaîne opérationnelle flux colis 6j/7.</div></div>
+    <div class="pc"><div class="pc-num">2 000<span>/j</span></div><div class="pc-title" data-i18n="proof1-title">Visiteurs gérés — EDF · Mondiaux Foix</div><div class="pc-sub" data-i18n="proof1-sub">600 athlètes, 50 nations. Relation public bilingue et représentation d'une marque nationale sur 5 jours de compétition.</div></div>
     <div class="pc"><div class="pc-num">6<span> pers.</span></div><div class="pc-title" data-i18n="proof2-title">Équipe pilotée — Chef de projet Ynov</div><div class="pc-sub" data-i18n="proof2-sub">Lancement complet d'une marque : direction esthétique, 3 produits designés, buyer persona, étude de marché, présentation jury.</div></div>
-    <div class="pc"><div class="pc-num">100<span>%</span></div><div class="pc-title" data-i18n="proof3-title">Rayons textile gérés — Intersport</div><div class="pc-sub" data-i18n="proof3-sub">Stocks, réassort, facing saisonnier et conseil client sur l'ensemble du rayon textile d'un magasin à fort volume.</div></div>
   </div>
 </section>
 
 <!-- EXP -->
 <section id="exp" class="fi">
   <div class="exp-inner">
-    <p class="sec-eye" id="exp-eye-el" data-i18n="exp-eye">Terrain</p>
-    <h2 id="exp-title-el" data-i18n="exp-title">Expériences professionnelles</h2>
-    <div class="exp-list" id="exp-list-el">
-      <!-- Populated by JS based on profil -->
-    </div>
+    <p class="sec-eye" data-i18n="exp-eye">Terrain</p>
+    <h2 data-i18n="exp-title">Expériences professionnelles</h2>
+    <div class="exp-list" id="exp-list-el"></div>
   </div>
 </section>
 
@@ -543,12 +411,8 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
   <div>
     <p class="sec-eye" data-i18n="skills-eye">Boîte à outils</p>
     <h2 data-i18n="skills-title">Compétences</h2>
-    <div class="skill-box" id="skills-hard">
-      <!-- Populated by JS -->
-    </div>
-    <div class="skill-box" id="skills-soft">
-      <!-- Populated by JS -->
-    </div>
+    <div class="skill-box" id="skills-hard"></div>
+    <div class="skill-box" id="skills-soft"></div>
   </div>
   <div>
     <p class="sec-eye" style="opacity:0;pointer-events:none">—</p>
@@ -573,7 +437,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
       <div class="vis-projects">
         <div class="vp-proj"><h4 data-i18n="vp1-title">Construction d'un réseau neuronal</h4><p data-i18n="vp1-desc">Apprentissage des fondamentaux du machine learning par la pratique : construction d'un premier modèle from scratch. Pas pour devenir ingénieur — pour ne pas être le manager qui ne comprend pas ce que son équipe construit.</p></div>
         <div class="vp-proj"><h4 data-i18n="vp2-title">Ce site, généré avec l'IA</h4><p data-i18n="vp2-desc">Ce portfolio a été entièrement conçu avec l'aide d'un LLM (Claude, Anthropic). De la structure au code, en passant par le contenu — une démonstration concrète de l'IA comme outil de productivité business.</p></div>
-        <div class="vp-proj"><h4 data-i18n="vp3-title">Exploration des cas d'usage business</h4><p data-i18n="vp3-desc">Veille active sur les applications de l'IA dans le retail, le luxe et la finance. Les outils changent vite — comprendre comment les intégrer dans une stratégie business reste une compétence humaine.</p></div>
+        <div class="vp-proj"><h4 data-i18n="vp3-title">Exploration des cas d'usage business</h4><p data-i18n="vp3-desc">Veille active sur les applications de l'IA dans les opérations et la supply chain. Les outils changent vite — comprendre comment les intégrer dans une stratégie business reste une compétence humaine.</p></div>
       </div>
     </div>
   </div>
@@ -583,8 +447,8 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 <section id="contact" class="fi">
   <div class="cc">
     <p class="sec-eye" data-i18n="contact-eye">Recruteurs, c'est ici</p>
-    <h2 data-i18n="contact-title">Alternance 1 an — Sept. 2026<br>Paris · Retail & Digital</h2>
-    <p data-i18n="contact-body">Je cherche une alternance d'un an en management dans la tech ou le luxe à Paris. Si mon profil vous parle, parlons-nous.</p>
+    <h2 data-i18n="contact-title">Alternance 1 an — Sept. 2026<br>Toulouse / Paris · Retail & Digital</h2>
+    <p data-i18n="contact-body">Je cherche une alternance d'un an en Retail &amp; Digital Management, ouverte à tous secteurs. Si mon profil vous parle, parlons-nous.</p>
     <div class="clinks">
       <a href="mailto:mathieu.riviere.combes@gmail.com" class="cl">✉ mathieu.riviere.combes@gmail.com</a>
       <a href="tel:+33631529255" class="cl">📞 06 31 52 92 55</a>
@@ -594,7 +458,7 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 </section>
 
 <footer>
-  <div>© 2026 Mathieu Riviere Combes — TBS Education · Paris</div>
+  <div>© 2026 Mathieu Riviere Combes — TBS Education · Toulouse</div>
   <div class="cd-label" id="cdLabel">Disponible en alternance dans</div>
   <div class="countdown">
     <div class="cd-item"><div class="cd-num" id="cd-j">--</div><div class="cd-lbl" data-i18n="cd-jours">Jours</div></div>
@@ -605,185 +469,58 @@ footer{text-align:center;padding:2rem 1.5rem;font-size:0.72rem;color:var(--muted
 </footer>
 
 <script>
-// ── DATA ──
-const EXP_DATA = {
-  tech: [
-    {icon:'⚡',head:'Chef de projet — Lancement de marque',headEn:'Project Manager — Brand Launch',co:'Ynov Campus · Toulouse',date:'2023–2024',
-     desc:'Direction d\'une équipe de 6 recrutée par compétences (design, marketing, animation 3D). Pilotage des livrables, gestion des délais et des ressources sur un projet complet de bout en bout.',
-     descEn:'Led a team of 6 recruited by skills. End-to-end project management: deliverables, deadlines, resources.',
-     accent:'Gestion de projet · Process agile · Coordination transversale',
-     tags:['Management','Planification','Miro / Trello','Design 2D/3D','Marketing']},
-    {icon:'🛒',head:'Conseiller de vente — Textile',headEn:'Sales Advisor — Textile',co:'Intersport · Pamiers',date:'2025 · 3 mois',
-     desc:'Gestion autonome des stocks, réassort et organisation des flux sur l\'ensemble des rayons textiles. Suivi de disponibilité produit et optimisation du facing en fonction des rotations.',
-     descEn:'Autonomous stock management, replenishment and flow organisation across all textile sections.',
-     accent:'Organisation des flux · Gestion stocks · Data terrain',
-     tags:['Supply Chain ops','Stocks','Flux clients','Autonomie']},
-    {icon:'🌊',head:'Hydroguide — Événement international',headEn:'Hydroguide — International Event',co:'EDF · Tarascon-sur-Ariège',date:'2025 · 3 mois',
-     desc:'Coordination logistique d\'un stand sur un événement international de 600 athlètes, 50 nations, 2 000 visiteurs/jour. Communication bilingue FR/EN avec Teams.',
-     descEn:'Logistics coordination at an international event: 600 athletes, 50 nations, 2,000 visitors/day. Bilingual FR/EN communication.',
-     accent:'Logistique événementielle · Coordination · International',
-     tags:['Événementiel','Logistique','Bilingue FR/EN','Teams']}
-  ],
-  luxe: [
-    {icon:'✦',head:'Chef de projet — Direction esthétique de marque',headEn:'Project Manager — Brand Creative Direction',co:'Ynov Campus · Toulouse',date:'2023–2024',
-     desc:'Direction esthétique complète d\'une marque de vêtement positionnée streetwear/gorpcore (entre ville et montagne). Conception de la collection 3 produits, direction artistique, création de la promotion et buyer persona. Épaulé par un étudiant en design pour affiner la DA.',
-     descEn:'Full creative direction of a streetwear/gorpcore clothing brand. 3-product collection, art direction, promotion and buyer persona.',
-     accent:'Direction artistique · Positionnement image · Esthétique produit',
-     tags:['Direction créative','Design 2D/3D','Maya / Blender','Suite Adobe','Merchandising']},
-    {icon:'🛒',head:'Conseiller de vente & facing — Textile',headEn:'Sales Advisor & Visual Merchandising — Textile',co:'Intersport · Pamiers',date:'2025 · 3 mois',
-     desc:'Responsable de l\'ensemble du facing textile : disposition des collections en fonction des saisons et des catalogues, organisation visuelle des rayons. Conseil client poussé pour accompagner les achats au-delà de la simple orientation. Réception des stocks, inventaire et réassort.',
-     descEn:'In charge of all textile visual merchandising: seasonal layout, catalogue display. In-depth client advisory and stock management.',
-     accent:'Facing · Merchandising saisonnier · Conseil client haut de gamme',
-     tags:['Visual merchandising','Facing','Conseil client','Stocks','Retail ops']},
-    {icon:'🌊',head:'Représentant de marque — Événement mondial',headEn:'Brand Representative — World Championship',co:'EDF · Tarascon-sur-Ariège',date:'2025 · 3 mois',
-     desc:'Représentation de la marque EDF sur un événement international parrainé par Tony Estanguet. Accueil d\'un public de 2 000 visiteurs/jour incluant 50 nations. Animation du stand avec une maquette de barrage pour engager un public multigénérationnel — une approche qui a permis de toucher un public plus large via les familles.',
-     descEn:'EDF brand representation at a Tony Estanguet-sponsored international event. 2,000 visitors/day, 50 nations. Innovative stand engagement strategy reaching multi-generational audiences.',
-     accent:'Représentation de marque · Accueil haut de gamme · Relation client internationale',
-     tags:['Brand representative','Relation client','International','Multilingual','Événementiel']}
-  ],
-  all: [
-    {icon:'⚡',head:'Chef de projet — Lancement de marque',headEn:'Project Manager — Brand Launch',co:'Ynov Campus · Toulouse',date:'2023–2024',
-     desc:'Direction esthétique et opérationnelle d\'une équipe de 6 pour le lancement complet d\'une marque : collection 3 produits, direction artistique, buyer persona, étude de marché et présentation devant un jury de professeurs et d\'étudiants.',
-     descEn:'Creative and operational direction of a 6-person team for a full brand launch: 3-product collection, art direction, buyer persona, market research.',
-     accent:'',tags:['Management','Design 2D/3D','Maya / Blender','Suite Adobe','Marketing']},
-    {icon:'🛒',head:'Conseiller de vente — Textile',headEn:'Sales Advisor — Textile',co:'Intersport · Pamiers',date:'2025 · 3 mois',
-     desc:'Gestion autonome de l\'ensemble des rayons textiles : facing saisonnier, réception des stocks, inventaire, réassort et conseil client.',
-     descEn:'Autonomous management of all textile sections: seasonal merchandising, stock reception, inventory and client advisory.',
-     accent:'',tags:['Retail ops','Gestion stocks','Facing','Relation client']},
-    {icon:'🌊',head:'Hydroguide — Événement international',headEn:'Hydroguide — International Event',co:'EDF · Tarascon-sur-Ariège',date:'2025 · 3 mois',
-     desc:'Prévention des risques et représentation EDF aux Championnats du Monde Junior de Canoë-Kayak à Foix : 600 athlètes, 50 nations, 2 000 visiteurs/jour. Communication bilingue FR/EN.',
-     descEn:'Risk prevention and EDF representation at the Junior World Championships: 600 athletes, 50 nations, 2,000 visitors/day.',
-     accent:'',tags:['Événementiel','Bilingue FR/EN','Prévention','Teams']}
-  ]
-};
+// ── DATA (profil unique) ──
+const EXP_DATA = [
+  {icon:'📦',head:'Assistant Manager Colissimo',headEn:'Assistant Manager — Colissimo',co:'Colissimo (Groupe La Poste) · Toulouse',date:'2026 · 2 mois',
+   desc:'Progression sur 4 postes successifs : agent de production, agent de secteur (Atlas WMS), chef d\'équipe et observation RLP/ROP — couverture complète d\'une chaîne opérationnelle flux colis 6j/7. Pilotage autonome d\'un secteur (réception chauffeurs, enregistrement Atlas, supervision déchargement), animation d\'équipe (brief matin, tour SST, analyse de données machines), conduite de 8 entretiens de présélection, et rédaction de 2 rapports d\'étonnement transmis à la direction.',
+   descEn:'Progressed through 4 roles: production agent, sector agent (Atlas WMS), team leader, and process observation — full operational coverage of a parcel flow platform. Autonomous sector management, team leadership, 8 pre-screening interviews, and 2 reports submitted to management.',
+   tags:['Supply Chain','Atlas WMS','Management d\'équipe','Pilotage de flux','Recrutement']},
+  {icon:'🌊',head:'Hydroguide — Événement international',headEn:'Hydroguide — International Event',co:'EDF · Tarascon-sur-Ariège',date:'2025 · 3 mois',
+   desc:'Prévention des risques rivière et barrages lors des Championnats du Monde Junior de Canoë-Kayak (600 athlètes, 50 nations, 2 000 visiteurs/jour). Communication bilingue FR/EN et représentation institutionnelle sur un événement à forte visibilité.',
+   descEn:'River and dam risk prevention at the Junior World Canoe-Kayak Championships: 600 athletes, 50 nations, 2,000 visitors/day. Bilingual FR/EN communication and public representation.',
+   tags:['Événementiel','Bilingue FR/EN','Prévention','Relation publique']},
+  {icon:'🛒',head:'Conseiller de vente — Textile',headEn:'Sales Advisor — Textile',co:'Intersport · Pamiers',date:'2025 · 3 mois',
+   desc:'Gestion autonome de l\'ensemble des rayons textiles : réception des stocks, inventaire, réassort, mise en place du facing selon les priorités commerciales, gestion des flux clients sur un magasin à fort volume.',
+   descEn:'Autonomous management of all textile sections: stock reception, inventory, replenishment, seasonal merchandising, client flow on a high-volume store.',
+   tags:['Retail ops','Gestion stocks','Facing','Relation client']},
+  {icon:'⚡',head:'Chef de projet — Lancement de marque',headEn:'Project Manager — Brand Launch',co:'Ynov Campus · Toulouse',date:'2023–2024 · 9 mois',
+   desc:'Direction d\'une équipe de 6 personnes recrutée par compétences pour le lancement d\'une marque de vêtement : positionnement, ciblage, buyer persona, étude de marché, production des livrables créatifs et présentation devant un jury.',
+   descEn:'Led a 6-person team for a full clothing brand launch: positioning, targeting, buyer persona, market research, creative deliverables and jury presentation.',
+   tags:['Gestion de projet','Management','Design 2D/3D','Marketing']}
+];
 
 const SKILLS_DATA = {
-  tech: {
-    hard:[{n:'Organisation des flux & Supply Chain',v:65},{n:'Miro / Trello / Outils collab',v:70},{n:'Design 2D/3D (Maya, Blender, Adobe)',v:72},{n:'Excel / Microsoft Office',v:45},{n:'Analyse de données',v:35}],
-    soft:[{n:'Management d\'équipe',v:78,g:true},{n:'Gestion de projet',v:75,g:true},{n:'Planification stratégique',v:62,g:true},{n:'Rigueur analytique',v:55,g:true}]
-  },
-  luxe: {
-    hard:[{n:'Visual merchandising & facing',v:70},{n:'Organisation des flux & stocks',v:65},{n:'Direction artistique & design',v:72},{n:'Outils collab (Miro, Trello)',v:70},{n:'Excel / Microsoft Office',v:45}],
-    soft:[{n:'Relation client haute exigence',v:75,g:true},{n:'Management d\'équipe',v:78,g:true},{n:'Sens de l\'esthétique & du détail',v:72,g:true},{n:'Communication internationale',v:75,g:true}]
-  },
-  all: {
-    hard:[{n:'Organisation des flux',v:65},{n:'Miro / Trello / Outils collab',v:70},{n:'Design 2D/3D (Maya, Blender, Adobe)',v:72},{n:'Excel / Microsoft Office',v:45},{n:'Analyse de données',v:35}],
-    soft:[{n:'Management d\'équipe',v:78,g:true},{n:'Relation client (face-à-face)',v:72,g:true},{n:'Planification stratégique',v:62,g:true},{n:'Rigueur analytique',v:55,g:true}]
-  }
+  hard:[{n:'Organisation des flux & Supply Chain',v:68},{n:'Atlas WMS',v:60},{n:'Miro / Trello / Outils collab',v:70},{n:'Excel / Microsoft Office',v:55},{n:'Analyse de données',v:40}],
+  soft:[{n:'Management d\'équipe',v:78,g:true},{n:'Gestion de projet',v:72,g:true},{n:'Relation client / communication',v:75,g:true},{n:'Rigueur & adaptabilité',v:65,g:true}]
 };
 
-// ── STATE ──
 const sections = ['value','profil-intro','proof','exp','skills-intl','vision','contact'];
 let currentFocusIndex = 0;
-let currentProfil = 'all';
 const lang = () => document.documentElement.lang || 'fr';
 
-// ── RENDER EXPERIENCES ──
-function renderExp(profil) {
+function renderExp() {
   const list = document.getElementById('exp-list-el');
-  const data = EXP_DATA[profil] || EXP_DATA.all;
   const isEn = lang() === 'en';
-  list.innerHTML = data.map(e => `
+  list.innerHTML = EXP_DATA.map(e => `
     <div class="ei">
       <div class="ei-icon">${e.icon}</div>
       <div>
         <div class="ei-head" data-date="${e.date}">${isEn ? e.headEn : e.head}</div>
         <div class="ei-co">${e.co}</div>
         <div class="ei-desc">${isEn ? e.descEn : e.desc}</div>
-        ${e.accent ? `<div class="ei-accent">↳ ${e.accent}</div>` : ''}
-        <div class="ei-tags">${e.tags.map((t,i) => `<span class="et${i<2&&profil!=='all'?' accent':''}">${t}</span>`).join('')}</div>
+        <div class="ei-tags">${e.tags.map(t => `<span class="et">${t}</span>`).join('')}</div>
       </div>
       <div class="ei-date">${e.date}</div>
     </div>`).join('');
 }
 
-// ── RENDER SKILLS ──
-function renderSkills(profil) {
-  const data = SKILLS_DATA[profil] || SKILLS_DATA.all;
-  const isEn = lang() === 'en';
-  const hardLabels = {tech:isEn?'Hard skills':'Hard skills',luxe:isEn?'Hard skills':'Hard skills',all:'Hard skills'};
+function renderSkills() {
   document.getElementById('skills-hard').innerHTML = `
-    <div class="sg-lbl">${hardLabels[profil]||'Hard skills'}</div>
-    ${data.hard.map(s=>`<div class="sr"><span class="sr-name">${s.n}</span><div class="sb-wrap"><div class="sb" style="width:${s.v}%"></div></div></div>`).join('')}`;
+    <div class="sg-lbl">Hard skills</div>
+    ${SKILLS_DATA.hard.map(s=>`<div class="sr"><span class="sr-name">${s.n}</span><div class="sb-wrap"><div class="sb" style="width:${s.v}%"></div></div></div>`).join('')}`;
   document.getElementById('skills-soft').innerHTML = `
     <div class="sg-lbl">Soft skills</div>
-    ${data.soft.map(s=>`<div class="sr"><span class="sr-name">${s.n}</span><div class="sb-wrap"><div class="sb${s.g?' g':''}" style="width:${s.v}%"></div></div></div>`).join('')}`;
-}
-
-// ── APPLY THEME ──
-function applyTheme(p) {
-  currentProfil = p;
-  const body = document.body;
-  body.classList.remove('theme-tech','theme-luxe');
-
-  const switcher = document.getElementById('profileSwitcher');
-  const switcherLabel = document.getElementById('switcherLabel');
-  const mmSwitch = document.getElementById('mmSwitch');
-  const techCard = document.getElementById('vc-tech');
-  const luxeCard = document.getElementById('vc-luxe');
-  const piTech = document.getElementById('pi-tech');
-  const piLuxe = document.getElementById('pi-luxe');
-  const piAll = document.getElementById('pi-all');
-  const heroSub = document.getElementById('hero-sub-el');
-  const heroBody = document.getElementById('hero-body-el');
-  const isEn = lang() === 'en';
-
-  // Hide all profil blocks
-  piTech.style.display = 'none';
-  piLuxe.style.display = 'none';
-  piAll.style.display = 'none';
-
-  if (p === 'tech') {
-    body.classList.add('theme-tech');
-    techCard.classList.remove('dimmed');
-    luxeCard.classList.add('dimmed');
-    piTech.style.display = 'block';
-    switcher.classList.add('visible');
-    mmSwitch.classList.add('visible');
-    switcherLabel.textContent = isEn ? '⇄ Luxury profile' : '⇄ Voir profil Luxe';
-    heroSub.textContent = isEn ? 'The manager who understands tech.' : 'Le manager qui comprend la tech.';
-    heroBody.textContent = isEn
-      ? 'Business school graduate, international experience, active curiosity for AI. Not an engineer — I lead ops, structure projects, and bridge business and tech teams. Convinced that tomorrow\'s best managers will speak the language of digital.'
-      : 'École de commerce, expérience internationale, curiosité active pour l\'IA. Pas un ingénieur — je pilote les opérations, structure les projets, fais le lien entre business et équipes tech. Convaincu que les meilleurs managers de demain parlent le langage du digital.';
-  } else if (p === 'luxe') {
-    body.classList.add('theme-luxe');
-    luxeCard.classList.remove('dimmed');
-    techCard.classList.add('dimmed');
-    piLuxe.style.display = 'block';
-    switcher.classList.add('visible');
-    mmSwitch.classList.add('visible');
-    switcherLabel.textContent = isEn ? '⇄ Tech profile' : '⇄ Voir profil Tech';
-    heroSub.textContent = isEn ? 'Excellence as a standard.' : "L'excellence comme standard.";
-    heroBody.textContent = isEn
-      ? 'Business school graduate, trained in retail operations, visual merchandising and high-standard client relations. Fascinated by the luxury supply chain — from raw material to coveted object. Here to discover the other side of the curtain.'
-      : 'École de commerce, formé aux opérations retail, au merchandising et à la relation client haute exigence. Fasciné par la supply chain du luxe — de la matière brute à l\'objet convoité. Ici pour découvrir l\'envers du décor.';
-  } else {
-    techCard.classList.remove('dimmed');
-    luxeCard.classList.remove('dimmed');
-    piAll.style.display = 'block';
-    switcher.classList.remove('visible');
-    mmSwitch.classList.remove('visible');
-    heroSub.textContent = isEn ? 'The manager who understands tech.' : 'Le manager qui comprend la tech.';
-    heroBody.textContent = isEn
-      ? 'Business school graduate, international experience, active curiosity for AI. I lead, I structure, I decide. Convinced that tomorrow\'s best managers speak the language of digital.'
-      : 'École de commerce, expérience internationale, curiosité active pour l\'IA. Je pilote, je structure, je décide. Convaincu que les meilleurs managers de demain parlent le langage du digital.';
-  }
-
-  renderExp(p);
-  renderSkills(p);
-}
-
-function chooseProfil(p) {
-  const splash = document.getElementById('splash');
-  splash.classList.add('hidden');
-  setTimeout(() => splash.style.display = 'none', 400);
-  applyTheme(p);
-}
-
-function resetProfil() {
-  const splash = document.getElementById('splash');
-  splash.style.display = 'flex';
-  setTimeout(() => splash.classList.remove('hidden'), 10);
+    ${SKILLS_DATA.soft.map(s=>`<div class="sr"><span class="sr-name">${s.n}</span><div class="sb-wrap"><div class="sb${s.g?' g':''}" style="width:${s.v}%"></div></div></div>`).join('')}`;
 }
 
 // ── FOCUS ──
@@ -796,16 +533,12 @@ function openFocus(sectionId) {
   const el = document.getElementById(sectionId);
   if (!el) return;
   currentFocusIndex = sections.indexOf(sectionId);
-
   const clone = el.cloneNode(true);
   clone.removeAttribute('id');
   clone.style.opacity = '1';
   clone.style.transform = 'none';
   clone.querySelectorAll('.fi').forEach(e => e.classList.add('v'));
-
-  // Skills-intl fix
   if (sectionId === 'skills-intl') clone.style.display = 'grid';
-
   document.getElementById('focusContent').innerHTML = '';
   document.getElementById('focusContent').appendChild(clone);
   updateFocusNav();
@@ -858,53 +591,57 @@ setInterval(updateCountdown, 1000);
 // ── TRANSLATIONS ──
 const T = {
   fr:{
-    "topbar":"Recherche d'alternance · Paris · Septembre 2026 · 1 an","topbar-cta":"Me contacter →","topbar-short":"Alternance · Paris · Sept. 2026","topbar-cta-short":"Contact →",
+    "topbar":"Recherche d'alternance · Toulouse / Paris · Septembre 2026 · 1 an","topbar-cta":"Me contacter →","topbar-short":"Alternance · Toulouse/Paris · Sept. 2026","topbar-cta-short":"Contact →",
     "nav-proposition":"Proposition","nav-profil":"Mon profil","nav-results":"Résultats","nav-exp":"Parcours","nav-skills":"Compétences","nav-vision":"Projets IA","nav-contact":"Contact",
-    "hero-eyebrow":"Alternance 1 an · Paris · Sept. 2026","hero-sub":"Le manager qui comprend la tech.",
-    "hero-body":"École de commerce, expérience internationale, curiosité active pour l'IA. Je pilote, je structure, je décide. Convaincu que les meilleurs managers de demain parlent le langage du digital.",
+    "hero-eyebrow":"Alternance 1 an · Toulouse / Paris · Sept. 2026","hero-sub":"Opérationnel dès le premier jour.",
+    "hero-body":"Étudiant en Bachelor Retail & Digital Management à TBS Education, je recherche une alternance d'un an à partir de septembre 2026. Une expérience terrain récente en supply chain (Colissimo, Groupe La Poste) confirme mon goût pour l'optimisation des flux et le pilotage d'équipe — ouvert à tous les secteurs dans le cadre de mon cursus.",
     "hero-cta1":"Me recruter →","hero-cta2":"Voir les résultats",
-    "stat1":"Expériences","stat2":"Pays","stat3":"Nations","stat4":"Anglais","stat5":"Équipe gérée","chip-paris":"Paris · Sept. 2026","lang-fr":"Natif",
-    "vc-tech-title":"Un manager qui<br>comprend la tech.","vc-tech-body":"Pas un ingénieur. Le profil business capable de piloter des opérations dans des environnements tech, comprendre les contraintes des équipes et traduire les enjeux en décisions concrètes.",
-    "vc-tech-li1":"Supply Chain & Ops en environnement digital","vc-tech-li2":"Gestion de projet transversal tech/business","vc-tech-li3":"Vision IA appliquée aux processus opérationnels","vc-tech-li4":"Curiosité active pour les technologies émergentes",
-    "vc-luxe-title":"L'excellence<br>comme standard.","vc-luxe-body":"Un profil retail formé à l'organisation des flux, à la présentation produit et à la relation client haute exigence. Fasciné par la chaîne de valeur du luxe, de la matière au désir.",
-    "vc-luxe-li1":"Retail management & supply chain luxe","vc-luxe-li2":"Présentation produit · facing · merchandising","vc-luxe-li3":"Relation client internationale (FR / EN)","vc-luxe-li4":"Sensibilité mode, horlogerie, maroquinerie",
+    "stat1":"Expériences","stat2":"Pays","stat3":"Nations","stat4":"Anglais","stat5":"Équipe gérée","chip-loc":"Toulouse / Paris · Sept. 2026","lang-fr":"Natif",
+    "vc-tag":"Ce que j'apporte","vc-title":"Un profil opérationnel, formé au terrain,<br>capable de s'adapter à tout secteur.",
+    "vc-body":"Ma polyvalence n'est pas un compromis : c'est le résultat d'un parcours volontairement diversifié — supply chain, retail, gestion de projet, événementiel international — qui m'a appris à être rapidement opérationnel, quel que soit l'environnement.",
+    "vc-li1":"Pilotage de flux logistiques (Atlas WMS)","vc-li2":"Gestion et animation d'équipe","vc-li3":"Gestion de projet transversal","vc-li4":"Relation client et communication internationale (FR/EN)",
+    "pi-eye":"Ce que je cherche","pi-title":"Retail, Digital & Operations<br>Toulouse / Paris","pi-tag":"Profil complet","pi-h3":"Un profil opérationnel, curieux, orienté terrain",
+    "pi-p1":"Étudiant en Retail & Digital Management à TBS Education, je cherche une alternance d'un an à Toulouse ou à Paris à partir de septembre 2026. Mon axe central : les opérations, la supply chain et la gestion de projet — ouvert à tous les secteurs dès lors que le poste s'inscrit dans le cadre de mon cursus.",
+    "pi-p2":"Mon parcours combine une expérience terrain récente en logistique (Colissimo, Groupe La Poste), des expériences retail et événementielles concrètes, et une formation académique orientée operations management, supply chain et marketing. J'apporte une curiosité active pour les nouvelles technologies, un anglais C1 acquis en conditions réelles à Vancouver, et une capacité prouvée à piloter des équipes et des projets de bout en bout.",
     "proof-eye":"Ce que j'ai fait","proof-title":"Résultats concrets",
+    "proof0-title":"Progression rapide — Colissimo","proof0-sub":"Agent de production, agent de secteur (Atlas WMS), chef d'équipe : couverture complète d'une chaîne opérationnelle flux colis 6j/7.",
     "proof1-title":"Visiteurs gérés — EDF · Mondiaux Foix","proof1-sub":"600 athlètes, 50 nations. Relation public bilingue et représentation d'une marque nationale sur 5 jours de compétition.",
     "proof2-title":"Équipe pilotée — Chef de projet Ynov","proof2-sub":"Lancement complet d'une marque : direction esthétique, 3 produits designés, buyer persona, étude de marché, présentation jury.",
-    "proof3-title":"Rayons textile gérés — Intersport","proof3-sub":"Stocks, réassort, facing saisonnier et conseil client sur l'ensemble du rayon textile d'un magasin à fort volume.",
     "exp-eye":"Terrain","exp-title":"Expériences professionnelles",
     "skills-eye":"Boîte à outils","skills-title":"Compétences",
     "intl-eye":"International","intl-title":"Vancouver · 4 mois","intl-body":"Immersion totale en contexte anglophone nord-américain. Autonomie complète, réseau international, anglais C1 acquis en conditions réelles.","intl-mod":"Environnement 50+ nations",
     "vision-eye":"Curiosité & projets","vision-title":"L'IA comme terrain d'exploration","vision-tag":"En cours","vision-h3":"Ce que j'explore concrètement",
     "vp1-title":"Construction d'un réseau neuronal","vp1-desc":"Apprentissage des fondamentaux du machine learning par la pratique. Pas pour devenir ingénieur — pour ne pas être le manager qui ne comprend pas ce que son équipe construit.",
     "vp2-title":"Ce site, généré avec l'IA","vp2-desc":"Ce portfolio a été entièrement conçu avec l'aide d'un LLM (Claude, Anthropic). De la structure au code — une démonstration concrète de l'IA comme outil de productivité business.",
-    "vp3-title":"Exploration des cas d'usage business","vp3-desc":"Veille active sur les applications de l'IA dans le retail, le luxe et la finance. Les outils changent vite — comprendre comment les intégrer reste une compétence humaine.",
-    "contact-eye":"Recruteurs, c'est ici","contact-title":"Alternance 1 an — Sept. 2026<br>Paris · Retail & Digital","contact-body":"Je cherche une alternance d'un an en management dans la tech ou le luxe à Paris. Si mon profil vous parle, parlons-nous.",
+    "vp3-title":"Exploration des cas d'usage business","vp3-desc":"Veille active sur les applications de l'IA dans les opérations et la supply chain. Les outils changent vite — comprendre comment les intégrer reste une compétence humaine.",
+    "contact-eye":"Recruteurs, c'est ici","contact-title":"Alternance 1 an — Sept. 2026<br>Toulouse / Paris · Retail & Digital","contact-body":"Je cherche une alternance d'un an en Retail & Digital Management, ouverte à tous secteurs. Si mon profil vous parle, parlons-nous.",
     "cd-jours":"Jours","cd-heures":"Heures","cd-minutes":"Minutes","cd-secondes":"Secondes"
   },
   en:{
-    "topbar":"Looking for a work-study · Paris · September 2026 · 1 year","topbar-cta":"Contact me →","topbar-short":"Work-study · Paris · Sept. 2026","topbar-cta-short":"Contact →",
+    "topbar":"Looking for a work-study · Toulouse / Paris · September 2026 · 1 year","topbar-cta":"Contact me →","topbar-short":"Work-study · Toulouse/Paris · Sept. 2026","topbar-cta-short":"Contact →",
     "nav-proposition":"Value Prop","nav-profil":"My profile","nav-results":"Results","nav-exp":"Experience","nav-skills":"Skills","nav-vision":"AI Projects","nav-contact":"Contact",
-    "hero-eyebrow":"Work-study · 1 year · Paris · Sept. 2026","hero-sub":"The manager who understands tech.",
-    "hero-body":"Business school graduate, international experience, active curiosity for AI. I lead, I structure, I decide. Convinced that tomorrow's best managers speak the language of digital.",
+    "hero-eyebrow":"Work-study · 1 year · Toulouse / Paris · Sept. 2026","hero-sub":"Operational from day one.",
+    "hero-body":"Retail & Digital Management Bachelor student at TBS Education, looking for a one-year work-study starting September 2026. A recent field experience in supply chain (Colissimo, La Poste Group) confirmed my interest in flow optimization and team leadership — open to any sector within my program.",
     "hero-cta1":"Hire me →","hero-cta2":"See results",
-    "stat1":"Experiences","stat2":"Countries","stat3":"Nations","stat4":"English","stat5":"Team led","chip-paris":"Paris · Sept. 2026","lang-fr":"Native",
-    "vc-tech-title":"A manager who<br>understands tech.","vc-tech-body":"Not an engineer. A business profile able to lead operations in tech environments, understand team constraints and translate challenges into concrete decisions.",
-    "vc-tech-li1":"Supply Chain & Ops in digital environments","vc-tech-li2":"Cross-functional project management","vc-tech-li3":"AI vision applied to operational processes","vc-tech-li4":"Active curiosity for emerging technologies",
-    "vc-luxe-title":"Excellence<br>as a standard.","vc-luxe-body":"A retail profile trained in flow management, visual merchandising and high-standard client relations. Fascinated by the luxury value chain, from raw material to desire.",
-    "vc-luxe-li1":"Retail management & luxury supply chain","vc-luxe-li2":"Product display · facing · merchandising","vc-luxe-li3":"International client relations (FR / EN)","vc-luxe-li4":"Sensitivity for fashion, watchmaking, leather goods",
+    "stat1":"Experiences","stat2":"Countries","stat3":"Nations","stat4":"English","stat5":"Team led","chip-loc":"Toulouse / Paris · Sept. 2026","lang-fr":"Native",
+    "vc-tag":"What I bring","vc-title":"An operational profile, field-trained,<br>able to adapt to any sector.",
+    "vc-body":"My versatility isn't a compromise: it's the result of a deliberately diverse path — supply chain, retail, project management, international events — that taught me to be quickly operational, whatever the environment.",
+    "vc-li1":"Logistics flow management (Atlas WMS)","vc-li2":"Team management and leadership","vc-li3":"Cross-functional project management","vc-li4":"Client relations and international communication (FR/EN)",
+    "pi-eye":"What I'm looking for","pi-title":"Retail, Digital & Operations<br>Toulouse / Paris","pi-tag":"Full profile","pi-h3":"An operational, curious, field-oriented profile",
+    "pi-p1":"Retail & Digital Management student at TBS Education, I'm looking for a one-year work-study in Toulouse or Paris starting September 2026. My focus: operations, supply chain and project management — open to any sector as long as the role fits my program.",
+    "pi-p2":"My path combines a recent field experience in logistics (Colissimo, La Poste Group), concrete retail and event experiences, and academic training in operations management, supply chain and marketing. I bring active curiosity for new technologies, C1 English acquired in real conditions in Vancouver, and a proven ability to lead teams and projects end to end.",
     "proof-eye":"What I've done","proof-title":"Concrete results",
+    "proof0-title":"Fast progression — Colissimo","proof0-sub":"Production agent, sector agent (Atlas WMS), team leader: full operational coverage of a parcel flow platform.",
     "proof1-title":"Visitors managed — EDF · World Champs","proof1-sub":"600 athletes, 50 nations. Bilingual public relations and brand representation over 5 competition days.",
     "proof2-title":"Team led — Project Manager Ynov","proof2-sub":"Full brand launch: creative direction, 3 products, buyer persona, market research, jury presentation.",
-    "proof3-title":"Textile sections managed — Intersport","proof3-sub":"Stock, replenishment, seasonal facing and client advisory across all textile sections.",
     "exp-eye":"Field experience","exp-title":"Work experience",
     "skills-eye":"Toolkit","skills-title":"Skills",
     "intl-eye":"International","intl-title":"Vancouver · 4 months","intl-body":"Full immersion in a North American English-speaking environment. Complete autonomy, international network, C1 English acquired in real conditions.","intl-mod":"50+ nations environment",
     "vision-eye":"Curiosity & projects","vision-title":"AI as a field of exploration","vision-tag":"In progress","vision-h3":"What I'm actively exploring",
     "vp1-title":"Building a neural network","vp1-desc":"Learning ML fundamentals through practice. Not to become an engineer — to avoid being the manager who doesn't understand what their team is building.",
     "vp2-title":"This website, generated with AI","vp2-desc":"This portfolio was entirely designed with a LLM (Claude, Anthropic). From structure to code — a concrete demonstration of AI as a business productivity tool.",
-    "vp3-title":"Exploring business use cases","vp3-desc":"Active monitoring of AI applications in retail, luxury and finance. Tools evolve fast — integrating them into business strategy remains a human skill.",
-    "contact-eye":"Recruiters, this way","contact-title":"Work-study · 1 year · Sept. 2026<br>Paris · Retail & Digital","contact-body":"Looking for a one-year work-study in tech or luxury management in Paris. If my profile speaks to you, let's talk.",
+    "vp3-title":"Exploring business use cases","vp3-desc":"Active monitoring of AI applications in operations and supply chain. Tools evolve fast — integrating them into business strategy remains a human skill.",
+    "contact-eye":"Recruiters, this way","contact-title":"Work-study · 1 year · Sept. 2026<br>Toulouse / Paris · Retail & Digital","contact-body":"Looking for a one-year work-study in Retail & Digital Management, open to any sector. If my profile speaks to you, let's talk.",
     "cd-jours":"Days","cd-heures":"Hours","cd-minutes":"Minutes","cd-secondes":"Seconds"
   }
 };
@@ -919,16 +656,14 @@ function setLang(l) {
   document.documentElement.lang = l;
   const cdLabel = document.getElementById('cdLabel');
   if (cdLabel) cdLabel.textContent = l === 'en' ? 'Available for work-study in' : 'Disponible en alternance dans';
-  // Re-render dynamic content in new language
-  renderExp(currentProfil);
-  if (currentProfil !== 'all') applyTheme(currentProfil);
+  renderExp();
 }
 
 // ── INIT ──
 const userLang = navigator.language || navigator.userLanguage;
 setLang(userLang.startsWith('fr') ? 'fr' : 'en');
-renderExp('all');
-renderSkills('all');
+renderExp();
+renderSkills();
 
 const obs = new IntersectionObserver(e => {
   e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
